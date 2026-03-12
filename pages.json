@@ -1,0 +1,34 @@
+{
+  "categories": {
+    "thesis": {
+      "label": "Investment Thesis",
+      "description": "Stock-specific deep dives and bull vs bear debates",
+      "icon": "chart-candlestick",
+      "color": "indigo"
+    },
+    "education": {
+      "label": "Education & Concepts",
+      "description": "Value investing fundamentals, frameworks, and mental models",
+      "icon": "graduation-cap",
+      "color": "emerald"
+    }
+  },
+  "pages": [
+    {
+      "file": "thesis/zeta-thesis-2026.html",
+      "title": "ZETA Global 2025: The Cash Truth Test",
+      "description": "Bull vs Bear debate on ZETA Global. Cash flow analysis, dilution engine, balance sheet quality, and organic vs M&A growth.",
+      "category": "thesis",
+      "date": "2026-03-12",
+      "tags": ["ZETA", "ad-tech", "SBC", "FCF", "dilution"]
+    },
+    {
+      "file": "education/inc-roic.html",
+      "title": "The Value Investor's Compass: Incremental ROIC",
+      "description": "WACC, ROIC, and Incremental ROIC explained with pizza and school analogies. Includes a real-world ZETA case study.",
+      "category": "education",
+      "date": "2026-03-12",
+      "tags": ["ROIC", "WACC", "Incremental ROIC", "fundamentals"]
+    }
+  ]
+}
