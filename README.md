@@ -33,3 +33,12 @@ value-investing/
 ## Author
 
 **Dubi Greenfeld** — Value investing researcher applying Buffett & Munger principles to public markets.
+
+## Changelog
+
+| Date | Change |
+|------|--------|
+| 2026-03-12 | Added custom diamond favicon to index page |
+| 2026-03-12 | Updated Inc. ROIC guide — added money vs percentage clarification, Buffett's 10% hurdle rate badge |
+| 2026-03-12 | Reorganized repo into `thesis/` and `education/` folders with dynamic index and `pages.json` manifest |
+| 2026-03-12 | Initial publish — ZETA Global 2025 thesis and Incremental ROIC educational guide |
