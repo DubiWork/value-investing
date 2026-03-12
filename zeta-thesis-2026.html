@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZETA Global 2025: מבחן האמת של המזומן</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--
+        PALETTE: "Cyberpunk Vibrant" (Deep Purple #2A0A4A, Card #3D1B63, Neon Cyan #00F0FF, Vibrant Pink #FF0055, Electric Yellow #FFE600, White #FFFFFF)
+        NARRATIVE PLAN: 
+        1. Intro/Hook: Introduce ZETA and the "Cash Truth Test" based on Buffett's principles. Show top-level KPIs.
+        2. The Profitability Mirage (Data Overview): Expose the gap between Adjusted EBITDA and GAAP Net Income.
+        3. The Dilution Engine (In-Depth Analysis): Break down Operating Cash Flow to show how SBC and CapEx result in a negative True FCF.
+        4. Balance Sheet Quality (Analysis): Highlight the heavy reliance on Goodwill & Intangibles due to M&A.
+        5. Growth Quality (Trends): Show Organic vs M&A growth to address the operating leverage argument.
+        6. Conclusion (Debate Summary): Show the winning arguments of BOTH the Bull and the Bear, acknowledging concessions made during the debate.
+        CHART CHOICES:
+        - Chart 1: Bar Chart (Goal: Compare) - Compares Adj EBITDA vs OCF vs GAAP. Canvas/Chart.js. NO SVG.
+        - Chart 2: Waterfall-style Bar Chart (Goal: Organize/Change) - Bridges OCF down to True FCF by subtracting CapEx and SBC. Canvas/Chart.js. NO SVG.
+        - Chart 3: Doughnut Chart (Goal: Compare/Composition) - Shows the weight of Goodwill/Intangibles in Total Assets. Canvas/Chart.js. NO SVG.
+        - Chart 4: Pie Chart (Goal: Compare/Composition) - Splits 2025 Revenue Growth into Organic vs M&A. Canvas/Chart.js. NO SVG.
+        CONFIRMATION: NEITHER Mermaid JS NOR SVG were used anywhere in the output.
+    -->
+    <style>
+        body {
+            background-color: #2A0A4A;
+            color: #FFFFFF;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .card {
+            background-color: #3D1B63;
+            border-top: 4px solid #00F0FF;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .stat-value {
+            color: #FFE600;
+            text-shadow: 0 0 10px rgba(255, 230, 0, 0.5);
+        }
+        .accent-pink { color: #FF0055; }
+        .accent-cyan { color: #00F0FF; }
+    </style>
+</head>
+<body class="antialiased p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight uppercase"><span class="accent-cyan">ZETA Global</span> 2025</h1>
+            <h2 class="text-2xl md:text-3xl font-light mb-6">מבחן האמת של המזומן: דיבייט שורי מול דובי</h2>
+            <p class="text-lg max-w-3xl mx-auto opacity-80">
+                האם חברת ה-AI והדאטה שמכה תחזיות היא אכן חברה "נפלאה", או שמדובר באשליית צמיחה הממומנת על ידי דילול משקיעים חסר רחמים? העברנו את דוח 2025 דרך מסננת ההשקעות הקפדנית מכולן.
+            </p>
+        </header>
+
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div class="card rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition">
+                <div class="text-4xl stat-value font-bold mb-2">128%</div>
+                <div class="text-sm uppercase tracking-wider font-semibold opacity-80">שימור לקוחות (NRR)</div>
+            </div>
+            <div class="card rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition" style="border-top-color: #FF0055;">
+                <div class="text-4xl font-bold mb-2 text-[#FF0055]" style="text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);">-$12.8M</div>
+                <div class="text-sm uppercase tracking-wider font-semibold opacity-80">תזרים חופשי אמיתי</div>
+            </div>
+            <div class="card rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition">
+                <div class="text-4xl stat-value font-bold mb-2">29.7%</div>
+                <div class="text-sm uppercase tracking-wider font-semibold opacity-80">צמיחה בהכנסות</div>
+            </div>
+            <div class="card rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition" style="border-top-color: #FF0055;">
+                <div class="text-4xl font-bold mb-2 text-[#FF0055]" style="text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);">18.6%</div>
+                <div class="text-sm uppercase tracking-wider font-semibold opacity-80">דילול מניות מסיבי</div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="card rounded-lg shadow-xl p-6 md:p-8">
+                <h3 class="text-2xl font-bold mb-4 accent-cyan border-b border-[#00F0FF]/30 pb-2">&#9888; אשליית הרווחיות (The Mirage)</h3>
+                <p class="mb-6 opacity-90 leading-relaxed">
+                    החברה מציגה למשקיעים <strong>Adjusted EBITDA</strong> מנופח של 278.6 מיליון דולר שמתעלם מעלויות אמיתיות. המציאות החשבונאית (GAAP) חושפת הפסד נקי של 31.5 מיליון דולר. זהו דגל אדום בוהק: חברה שרושמת הפסדים אך מתהדרת ב"רווחיות מתואמת".
+                </p>
+                <div class="chart-container">
+                    <canvas id="profitabilityChart"></canvas>
+                </div>
+                <p class="mt-4 text-sm opacity-70 text-center italic">"מדד שמגדיר מחדש רווחים כדי להתעלם מהוצאות אמיתיות לחלוטין" - וורן באפט</p>
+            </div>
+
+            <div class="card rounded-lg shadow-xl p-6 md:p-8">
+                <h3 class="text-2xl font-bold mb-4 accent-pink border-b border-[#FF0055]/30 pb-2">&#128184; מנוע הדילול והשכר האמיתי</h3>
+                <p class="mb-6 opacity-90 leading-relaxed">
+                    תזרים המזומנים התפעולי (OCF) נראה טוב על הנייר (198.9 מיליון), אך הוא מבוסס על חלוקת מניות לעובדים (SBC). כשמורידים את ההשקעות ההוניות (CapEx) ואת השכר ששולם במניות, <strong>התזרים החופשי האמיתי לבעלים שלילי</strong>.
+                </p>
+                <div class="chart-container">
+                    <canvas id="fcfBridgeChart"></canvas>
+                </div>
+                <p class="mt-4 text-sm opacity-70 text-center italic">החברה שורפת מזומן ומממנת את התפעול דרך כיסי המשקיעים.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="card rounded-lg shadow-xl p-6 md:p-8">
+                <h3 class="text-2xl font-bold mb-4 accent-cyan border-b border-[#00F0FF]/30 pb-2">&#127984; איכות המאזן והחפיר הכלכלי</h3>
+                <p class="mb-6 opacity-90 leading-relaxed">
+                    זטא מבצעת רכישות (M&A) שיוצרות דילול, והן מתבטאות במאזן מנופח. כמעט <strong>50% מסך הנכסים</strong> (745.8 מיליון דולר) הם "מוניטין" ונכסים בלתי מוחשיים, עדות לפרמיות ששולמו עבור צמיחה, ולא למזומן קשה או נכסים מניבים פיזיים.
+                </p>
+                <div class="chart-container">
+                    <canvas id="balanceSheetChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card rounded-lg shadow-xl p-6 md:p-8">
+                <h3 class="text-2xl font-bold mb-4 text-[#FFE600] border-b border-[#FFE600]/30 pb-2">&#128200; מנוע הצמיחה (אורגני מול M&A)</h3>
+                <p class="mb-6 opacity-90 leading-relaxed">
+                    נקודת האור בתזה היא שרוב הצמיחה (71%) בשנת 2025 היא <strong>אורגנית</strong>. הלקוחות נשארים ומגדילים שימוש. עם זאת, התחזוקה של הצמיחה הזו דורשת 340 מיליון דולר בהוצאות שיווק מכירות (S&M), שאינן ניתנות לקיצוץ ללא קריסת החפיר.
+                </p>
+                <div class="chart-container">
+                    <canvas id="growthSourceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW SECTION: Bull vs Bear Winning Arguments -->
+        <section class="mb-12">
+            <h2 class="text-3xl md:text-4xl font-black mb-8 text-center uppercase">סיכום העימות: הטענות המנצחות של כל צד</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Bull Side -->
+                <div class="card rounded-lg shadow-2xl p-8 border-t-8 border-[#00F0FF]">
+                    <h3 class="text-2xl font-bold mb-6 text-[#00F0FF] flex items-center">
+                        <span class="text-3xl mr-3">&#128200;</span> הצד השורי: הליבה העסקית עובדת
+                    </h3>
+                    <ul class="space-y-6">
+                        <li class="bg-[#2A0A4A] p-5 rounded-lg border border-[#00F0FF]/20 shadow-inner">
+                            <h4 class="font-bold text-lg mb-2 text-[#00F0FF]">✅ הדובי נסוג: החפיר עמיד והמודל מרוויח</h4>
+                            <p class="opacity-90 text-sm leading-relaxed">הדובי חזר בו מטענת ה"תלות בטראפיק" ונאלץ להסכים שלזטא שולי רווח גולמי פנומנליים (מעל 60%) ונכסים אורגניים חזקים, מה שמוכיח שהיא לא משלמת "דמי מעבר" הרסניים לענקיות הטכנולוגיה.</p>
+                        </li>
+                        <li class="bg-[#2A0A4A] p-5 rounded-lg border border-[#00F0FF]/20 shadow-inner">
+                            <h4 class="font-bold text-lg mb-2 text-[#00F0FF]">✅ מינוף תפעולי מוכח (Incremental ROIC)</h4>
+                            <p class="opacity-90 text-sm leading-relaxed">החברה הגיעה לרווח תפעולי GAAP ראשון, והוכיחה תשואה תוספתית אדירה של 57% על ההון החדש שהושקע ב-2025. מנוע ההכנסות צומח הרבה יותר מהר מההוצאות הקבועות.</p>
+                        </li>
+                        <li class="bg-[#2A0A4A] p-5 rounded-lg border border-[#00F0FF]/20 shadow-inner">
+                            <h4 class="font-bold text-lg mb-2 text-[#00F0FF]">✅ צמיחה אורגנית ללא רעשי רקע</h4>
+                            <p class="opacity-90 text-sm leading-relaxed">השורי הפריך את חששות ה"הון החוזר" והוכיח שמדובר בעיוות עונתי. 71% מהצמיחה הגיעה מבפנים (לקוחות קיימים) עם שימור מוחלט של 128% (NRR).</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bear Side -->
+                <div class="card rounded-lg shadow-2xl p-8 border-t-8 border-[#FF0055]">
+                    <h3 class="text-2xl font-bold mb-6 text-[#FF0055] flex items-center">
+                        <span class="text-3xl mr-3">&#128184;</span> הצד הדובי: האמת של המזומן מנצחת
+                    </h3>
+                    <ul class="space-y-6">
+                        <li class="bg-[#2A0A4A] p-5 rounded-lg border border-[#FF0055]/20 shadow-inner">
+                            <h4 class="font-bold text-lg mb-2 text-[#FF0055]">❌ אשליית הקיצוץ (Maintenance CapEx)</h4>
+                            <p class="opacity-90 text-sm leading-relaxed">השורי נכנע והודה: הוצאות השיווק העצומות (340M$) אינן מותרות שאפשר "לכבות" במיתון. בעולם האד-טק האכזרי, מדובר ב"הוצאות תחזוקה" קשיחות הנדרשות כדי למנוע נטישת לקוחות המונית.</p>
+                        </li>
+                        <li class="bg-[#2A0A4A] p-5 rounded-lg border border-[#FF0055]/20 shadow-inner">
+                            <h4 class="font-bold text-lg mb-2 text-[#FF0055]">❌ דילול אגרסיבי כמכבסת מזומן</h4>
+                            <p class="opacity-90 text-sm leading-relaxed">השכר במניות (177.8M$) משאיר את בעלי המניות עם תזרים חופשי שלילי (-12.8M$). רכישות חוזרות (Buybacks) בסך 121M$ לא יוצרות ערך, הן פשוט משמשות לתשלום שכר במסווה שמכלה את קופת החברה.</p>
+                        </li>
+                        <li class="bg-[#2A0A4A] p-5 rounded-lg border border-[#FF0055]/20 shadow-inner">
+                            <h4 class="font-bold text-lg mb-2 text-[#FF0055]">❌ ספקולציה ללא שולי ביטחון</h4>
+                            <p class="opacity-90 text-sm leading-relaxed">השורי הסכים סופית שמכפיל מכירות אינו רשת הגנה. תשלום 4.5 מיליארד דולר על חברה ששורפת מזומן מתמחר עשור של "שלמות" ולא משאיר שום מקום לטעויות או להאטה מאקרו-כלכלית.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const wrapLabels = (labels) => {
+            return labels.map(label => {
+                if (typeof label !== 'string' || label.length <= 16) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = words[0];
+                for (let i = 1; i < words.length; i++) {
+                    if (currentLine.length + words[i].length + 1 <= 16) {
+                        currentLine += ' ' + words[i];
+                    } else {
+                        lines.push(currentLine);
+                        currentLine = words[i];
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            });
+        };
+
+        const globalTooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        Chart.defaults.color = '#FFFFFF';
+        Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+
+        const ctxProf = document.getElementById('profitabilityChart').getContext('2d');
+        new Chart(ctxProf, {
+            type: 'bar',
+            data: {
+                labels: wrapLabels(['EBITDA מתואם (פיקציה)', 'תזרים מפעילות שוטפת', 'תזרים חופשי אמיתי', 'רווח נקי (GAAP)']),
+                datasets: [{
+                    label: 'מיליוני דולרים',
+                    data: [278.6, 198.9, -12.8, -31.5],
+                    backgroundColor: [
+                        '#00F0FF', 
+                        '#FFE600', 
+                        '#FF0055', 
+                        '#FF0055'  
+                    ],
+                    borderWidth: 0,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: globalTooltipConfig
+                },
+                scales: {
+                    y: {
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        const ctxBridge = document.getElementById('fcfBridgeChart').getContext('2d');
+        new Chart(ctxBridge, {
+            type: 'bar',
+            data: {
+                labels: wrapLabels(['תזרים פעילות שוטפת', 'פחות: השקעות הון (CapEx)', 'פחות: עלות שכר במניות', 'השורה התחתונה לבעלים']),
+                datasets: [{
+                    label: 'השפעה על התזרים ($M)',
+                    data: [198.9, -33.9, -177.8, -12.8],
+                    backgroundColor: [
+                        '#00F0FF', 
+                        'rgba(255, 255, 255, 0.6)', 
+                        '#FFE600', 
+                        '#FF0055'  
+                    ],
+                    borderWidth: 0,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: globalTooltipConfig
+                },
+                scales: {
+                    x: {
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        const ctxBalance = document.getElementById('balanceSheetChart').getContext('2d');
+        new Chart(ctxBalance, {
+            type: 'doughnut',
+            data: {
+                labels: wrapLabels(['מוניטין חשבונאי (Goodwill)', 'נכסים בלתי מוחשיים', 'שאר נכסי החברה']),
+                datasets: [{
+                    data: [527.9, 217.9, 757.7],
+                    backgroundColor: [
+                        '#FF0055',
+                        '#FFE600',
+                        '#00F0FF'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#3D1B63'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'right' },
+                    tooltip: globalTooltipConfig
+                },
+                cutout: '70%'
+            }
+        });
+
+        const ctxGrowth = document.getElementById('growthSourceChart').getContext('2d');
+        new Chart(ctxGrowth, {
+            type: 'pie',
+            data: {
+                labels: wrapLabels(['צמיחה אורגנית (מלקוחות קיימים)', 'צמיחה מרכישות (M&A)']),
+                datasets: [{
+                    data: [214.7, 84.2],
+                    backgroundColor: [
+                        '#00F0FF',
+                        '#FFE600'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#3D1B63'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: globalTooltipConfig
+                }
+            }
+        });
+    </script>
+</body>
+</html>

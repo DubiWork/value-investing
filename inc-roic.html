@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אינפוגרפיקה: מנועי יצירת ערך למשקיע</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body class="text-slate-800 p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
+        
+        <!-- Header -->
+        <div class="bg-slate-900 text-white p-8 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2"></div>
+            
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 relative z-10">המצפן של משקיע הערך</h1>
+            <p class="text-xl text-slate-300 font-light max-w-2xl mx-auto relative z-10">
+                איך מזהים אם חברה באמת יוצרת ערך או סתם שורפת מזומנים? <br>המדריך המהיר למושגי הברזל של וורן באפט.
+            </p>
+        </div>
+
+        <div class="p-6 md:p-10">
+            
+            <!-- 3 Pillars Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                
+                <!-- WACC Card -->
+                <div class="bg-rose-50 rounded-2xl p-6 border border-rose-100 hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="landmark" class="w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-rose-900 mb-2">WACC</h2>
+                    <h3 class="text-sm font-semibold text-rose-600 uppercase tracking-wider mb-4">עלות ההון (רף המשוכה)</h3>
+                    <p class="text-slate-700 mb-4 line-clamp-3">המחיר שהחברה משלמת על הכסף שלה (ריבית לבנקים או תשואה נדרשת למשקיעים).</p>
+                    <div class="bg-white p-4 rounded-xl border border-rose-100">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i data-lucide="pizza" class="w-5 h-5 text-amber-500"></i>
+                            <span class="font-bold">אנלוגיית הפיצרייה:</span>
+                        </div>
+                        <p class="text-sm text-slate-600">הריבית של 10% שהבנק דורש על ההלוואה שלקחת כדי לפתוח את העסק. אם לא תרוויח יותר מזה, אתה מפסיד כסף.</p>
+                    </div>
+                </div>
+
+                <!-- ROIC Card -->
+                <div class="bg-blue-50 rounded-2xl p-6 border border-blue-100 hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="history" class="w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-blue-900 mb-2">ROIC</h2>
+                    <h3 class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">תשואה היסטורית על ההון</h3>
+                    <p class="text-slate-700 mb-4 line-clamp-3">כמה רווח החברה מייצרת על <b>כל</b> הכסף שהושקע בה אי פעם (כולל רכישות ישנות וטעויות עבר).</p>
+                    <div class="bg-white p-4 rounded-xl border border-blue-100">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i data-lucide="graduation-cap" class="w-5 h-5 text-blue-500"></i>
+                            <span class="font-bold">אנלוגיית בית הספר:</span>
+                        </div>
+                        <p class="text-sm text-slate-600">ממוצע הבגרויות המצטבר שלך מכיתה א' ועד י"ב. הוא כולל את כל הנכשלים שקיבלת בחטיבת הביניים וסוחב אותך למטה.</p>
+                    </div>
+                </div>
+
+                <!-- Inc. ROIC Card -->
+                <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100 hover:shadow-md transition-shadow relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">הכי חשוב!</div>
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="rocket" class="w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-emerald-900 mb-2">Inc. ROIC</h2>
+                    <h3 class="text-sm font-semibold text-emerald-600 uppercase tracking-wider mb-4">תשואה תוספתית על ההון</h3>
+                    <p class="text-slate-700 mb-4 line-clamp-3">מתעלם מההיסטוריה. בודק רק: על כל דולר <b>חדש</b> שהשקענו השנה, כמה רווח <b>חדש</b> יצרנו?</p>
+                    <div class="bg-white p-4 rounded-xl border border-emerald-100">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i data-lucide="book-open" class="w-5 h-5 text-emerald-500"></i>
+                            <span class="font-bold">אנלוגיית בית הספר:</span>
+                        </div>
+                        <p class="text-sm text-slate-600">ציוני התעודה של <b>הסמסטר האחרון בלבד</b>. מוכיח שאולי היית תלמיד גרוע בעבר, אבל עכשיו אתה גאון שמוציא רק מאיות (נקודת מפנה).</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- The Ultimate Formula -->
+            <div class="bg-slate-800 rounded-3xl p-8 text-white mb-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+                <h2 class="text-3xl font-bold text-center mb-8 relative z-10">נוסחת הקסם: מתי חברה יוצרת ערך?</h2>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6 relative z-10">
+                    <div class="bg-slate-700 px-6 py-4 rounded-2xl border border-slate-600 text-center w-full md:w-auto">
+                        <span class="block text-emerald-400 font-bold text-2xl mb-1">Inc. ROIC</span>
+                        <span class="text-sm text-slate-300">הרווח החדש</span>
+                    </div>
+                    
+                    <div class="text-4xl font-black text-slate-400">&gt;</div>
+                    
+                    <div class="bg-slate-700 px-6 py-4 rounded-2xl border border-slate-600 text-center w-full md:w-auto">
+                        <span class="block text-rose-400 font-bold text-2xl mb-1">WACC</span>
+                        <span class="text-sm text-slate-300">עלות הכסף</span>
+                    </div>
+                    
+                    <div class="text-4xl font-black text-emerald-400 hidden md:block">=</div>
+                    
+                    <div class="bg-gradient-to-r from-emerald-500 to-teal-500 px-8 py-5 rounded-2xl shadow-lg text-center w-full md:w-auto transform transition hover:scale-105">
+                        <span class="block text-white font-black text-2xl mb-1">יצירת ערך!</span>
+                        <span class="text-sm text-emerald-100">החברה מתעשרת מצמיחה</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real World Example: ZETA -->
+            <div class="border-t border-slate-200 pt-10">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="bg-indigo-100 p-3 rounded-full text-indigo-600">
+                        <i data-lucide="microscope" class="w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-800">דוגמה מהשטח: המקרה של ZETA (2025)</h2>
+                </div>
+                
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1 space-y-4">
+                        <p class="text-slate-700">אם נסתכל רק על ה-<b>ROIC הכללי</b> של חברת זטא, נראה מספר עלוב של <span class="bg-rose-100 text-rose-700 font-bold px-2 py-1 rounded">1.3%</span>. זה קורה בגלל שהמאזן שלה מנופח מקניות ישנות של חברות (Goodwill).</p>
+                        <p class="text-slate-700">אבל, כשאנחנו בודקים את ה-<b>Inc. ROIC</b> (מה קרה בשנה האחרונה), אנחנו מגלים שעל ההשקעות החדשות שלה החברה ייצרה תשואה פנומנלית של <span class="bg-emerald-100 text-emerald-700 font-bold px-2 py-1 rounded">57%!</span></p>
+                        <p class="text-slate-700">מכיוון שעלות ההון (WACC) שלה היא סביב <span class="font-bold">9.6%</span>, המספר 57% מוכיח שההנהלה מצאה היום מנוע צמיחה אדיר. <b>זו נקודת המפנה שלה.</b></p>
+                    </div>
+                    
+                    <div class="w-full md:w-1/3 bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <h4 class="text-center text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">תעודת הזהות של ZETA</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                                <span class="text-slate-600">ROIC מצטבר:</span>
+                                <span class="font-bold text-rose-600">1.3%</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                                <span class="text-slate-600">עלות הון (WACC):</span>
+                                <span class="font-bold text-slate-800">~9.6%</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-1">
+                                <span class="text-slate-800 font-bold">Inc. ROIC (הסמסטר האחרון):</span>
+                                <span class="font-black text-emerald-600 text-xl">57%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
