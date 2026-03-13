@@ -38,6 +38,7 @@ value-investing/
 
 | Date | Change |
 |------|--------|
+| 2026-03-13 | Added Firebase Analytics (edgar-value-miner project) to all pages for unified usage tracking |
 | 2026-03-12 | Added custom diamond favicon to index page |
 | 2026-03-12 | Updated Inc. ROIC guide — added money vs percentage clarification, Buffett's 10% hurdle rate badge |
 | 2026-03-12 | Reorganized repo into `thesis/` and `education/` folders with dynamic index and `pages.json` manifest |
