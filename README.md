@@ -15,6 +15,7 @@ A collection of interactive investment research pages — thesis deep dives, edu
 
 - **[ZETA Global 2025: The Cash Truth Test](https://dubiwork.github.io/value-investing/thesis/zeta-thesis-2026.html)** — Bull vs Bear debate analyzing ZETA's cash flow, dilution, balance sheet quality, and growth sources
 - **[The Value Investor's Compass: Incremental ROIC](https://dubiwork.github.io/value-investing/education/inc-roic.html)** — WACC, ROIC, and Incremental ROIC explained with real-world analogies and a ZETA case study
+- **[ZETA Global: Forensic Investigation Report](https://dubiwork.github.io/value-investing/thesis/zeta-forensic-2026.html)** — Deep bear case covering consent farms, revenue round-tripping, FCF illusion, M&A smoke screen, and insider selling
 
 ## How It Works
 
@@ -38,6 +39,7 @@ value-investing/
 
 | Date | Change |
 |------|--------|
+| 2026-03-14 | Added ZETA Global forensic investigation report (bear case / short thesis) |
 | 2026-03-13 | Added Firebase Analytics (edgar-value-miner project) to all pages for unified usage tracking |
 | 2026-03-12 | Added custom diamond favicon to index page |
 | 2026-03-12 | Updated Inc. ROIC guide — added money vs percentage clarification, Buffett's 10% hurdle rate badge |

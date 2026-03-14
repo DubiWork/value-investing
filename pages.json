@@ -20,7 +20,13 @@
       "description": "Bull vs Bear debate on ZETA Global. Cash flow analysis, dilution engine, balance sheet quality, and organic vs M&A growth.",
       "category": "thesis",
       "date": "2026-03-12",
-      "tags": ["ZETA", "ad-tech", "SBC", "FCF", "dilution"]
+      "tags": [
+        "ZETA",
+        "ad-tech",
+        "SBC",
+        "FCF",
+        "dilution"
+      ]
     },
     {
       "file": "education/inc-roic.html",
@@ -28,7 +34,27 @@
       "description": "WACC, ROIC, and Incremental ROIC explained with pizza and school analogies. Includes a real-world ZETA case study.",
       "category": "education",
       "date": "2026-03-12",
-      "tags": ["ROIC", "WACC", "Incremental ROIC", "fundamentals"]
+      "tags": [
+        "ROIC",
+        "WACC",
+        "Incremental ROIC",
+        "fundamentals"
+      ]
+    },
+    {
+      "file": "thesis/zeta-forensic-2026.html",
+      "title": "ZETA Global: Forensic Investigation Report",
+      "description": "Deep bear case: consent farms, revenue round-tripping, FCF illusion via SBC, M&A smoke screen, and insider selling patterns.",
+      "category": "thesis",
+      "date": "2026-03-14",
+      "tags": [
+        "ZETA",
+        "short thesis",
+        "forensic",
+        "SBC",
+        "insider selling",
+        "FTC risk"
+      ]
     }
   ]
 }
