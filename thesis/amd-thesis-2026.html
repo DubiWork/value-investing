@@ -17,7 +17,7 @@
         Ice:        #7DD3FC (data & numbers — cold precision)
         Danger:     #F87171 (warnings, negative signals)
         Sage:       #6EE7B7 (positive signals, moat indicators)
-        Muted:      #6B7280 (secondary text)
+        Muted:      #9CA3AF (secondary text)
         Border:     #2A2D35 (subtle dividers)
 
         AESTHETIC: Industrial Financial Noir
@@ -48,10 +48,10 @@
             --danger-dim:#7F1D1D;
             --sage:      #6EE7B7;
             --sage-dim:  #064E3B;
-            --muted:     #6B7280;
+            --muted:     #9CA3AF;
             --border:    #2A2D35;
             --text:      #E5E7EB;
-            --text-soft: #9CA3AF;
+            --text-soft: #B0B8C4;
         }
 
         * { box-sizing: border-box; }
@@ -62,7 +62,7 @@
             background-color: var(--bg);
             color: var(--text);
             font-family: 'Heebo', sans-serif;
-            line-height: 1.65;
+            line-height: 1.75;
             min-height: 100vh;
         }
 
@@ -119,7 +119,7 @@
 
         .ticker-stamp {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 0.12em;
             color: var(--amber);
@@ -132,7 +132,7 @@
 
         .date-stamp {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem;
+            font-size: 0.72rem;
             color: var(--muted);
             letter-spacing: 0.08em;
         }
@@ -179,7 +179,7 @@
 
         .verdict-label {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.6rem;
+            font-size: 0.72rem;
             letter-spacing: 0.15em;
             color: var(--muted);
             text-transform: uppercase;
@@ -200,7 +200,7 @@
 
         .buy-zone-label {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.6rem;
+            font-size: 0.72rem;
             letter-spacing: 0.12em;
             color: var(--muted);
             text-transform: uppercase;
@@ -257,7 +257,7 @@
 
         .section-number {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 0.1em;
             color: var(--muted);
@@ -269,7 +269,7 @@
 
         .section-label {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.6rem;
+            font-size: 0.72rem;
             letter-spacing: 0.15em;
             color: var(--section-accent, var(--amber));
             text-transform: uppercase;
@@ -316,7 +316,7 @@
 
         .kpi-label {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.58rem;
+            font-size: 0.72rem;
             letter-spacing: 0.1em;
             color: var(--muted);
             text-transform: uppercase;
@@ -333,14 +333,14 @@
         }
 
         .kpi-sub {
-            font-size: 0.7rem;
+            font-size: 0.78rem;
             color: var(--text-soft);
         }
 
         /* ─── PROSE ──────────────────────────────────────────── */
         .prose-block {
-            font-size: 0.95rem;
-            color: var(--text-soft);
+            font-size: 1rem;
+            color: var(--text);
             line-height: 1.8;
             margin-bottom: 1.25rem;
         }
@@ -383,7 +383,7 @@
 
         .buffett-attribution {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.62rem;
+            font-size: 0.72rem;
             letter-spacing: 0.1em;
             color: var(--amber);
             text-transform: uppercase;
@@ -400,7 +400,7 @@
 
         .finding-label {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.58rem;
+            font-size: 0.72rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--muted);
@@ -408,7 +408,7 @@
         }
 
         .finding-text {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             color: var(--text);
             line-height: 1.65;
         }
@@ -418,7 +418,7 @@
             width: 100%;
             border-collapse: collapse;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.88rem;
             margin-bottom: 1.5rem;
         }
 
@@ -430,14 +430,14 @@
             padding: 0.6rem 0.75rem;
             text-align: right;
             color: var(--muted);
-            font-size: 0.62rem;
+            font-size: 0.72rem;
             letter-spacing: 0.1em;
             font-weight: 400;
             text-transform: uppercase;
         }
 
         .data-table td {
-            padding: 0.65rem 0.75rem;
+            padding: 0.75rem 0.75rem;
             border-bottom: 1px solid rgba(42,45,53,0.5);
             color: var(--text);
         }
@@ -468,8 +468,8 @@
 
         .waterfall-label {
             flex: 1;
-            font-size: 0.88rem;
-            color: var(--text-soft);
+            font-size: 0.95rem;
+            color: var(--text);
         }
 
         .waterfall-value {
@@ -571,7 +571,7 @@
         }
 
         .buy-zone-sub {
-            font-size: 0.78rem;
+            font-size: 0.82rem;
             color: var(--muted);
             font-family: 'IBM Plex Mono', monospace;
             letter-spacing: 0.08em;
@@ -599,7 +599,7 @@
             padding: 0.9rem 1.25rem;
             border-radius: 4px;
             margin-bottom: 1.25rem;
-            font-size: 0.875rem;
+            font-size: 0.92rem;
             line-height: 1.6;
         }
 
@@ -624,7 +624,7 @@
         /* ─── NAVIGATION ──────────────────────────────────────── */
         .nav-back {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem;
+            font-size: 0.78rem;
             letter-spacing: 0.1em;
             color: var(--muted);
             text-decoration: none;
@@ -736,18 +736,18 @@
                 <div class="kpi-item" style="--kpi-color: var(--amber);">
                     <div class="kpi-label">דירוג חפיר</div>
                     <div class="kpi-value">חלקי</div>
-                    <div class="kpi-sub">לא מעגן, ניתן לתקוף</div>
+                    <div class="kpi-sub">לא מושרש — ניתן לתקוף</div>
                 </div>
             </div>
 
             <p class="prose-block">
                 AMD הפגינה מעבר טכנולוגי יוצא דופן — ממעבד שולי לאיום אמיתי על Intel ו-NVIDIA גם יחד.
-                <strong>שולי הגולמי עלו מ-44% ב-2020 ל-53% ב-2025</strong>, ומגזר מרכז הנתונים (EPYC, MI300X) צומח דו-ספרתי.
+                <strong>שולי הרווח הגולמי עלו מ-44% ב-2020 ל-53% ב-2025</strong>, ומגזר מרכז הנתונים (EPYC, MI300X) צומח בקצב דו-ספרתי.
                 הנתונים מרשימים. אך הסיפור מסתבך כשבוחנים את עלות שמירת המעמד.
             </p>
 
             <p class="prose-block">
-                החברה מוציאה <strong>$8.1 מיליארד בשנה על מחקר ופיתוח</strong> — כדי לשמור על קצב יחסית ל-NVIDIA, לא כדי לבנות יתרון עצמאי. מדובר ב"חפיר מירוץ חימוש": כדי להישאר רלוונטיים חייבים לרוץ מהר יותר מהמתחרה, לא לישון בשקט. זה בדיוק הניגוד לחפיר בפטיאני קלאסי.
+                החברה מוציאה <strong>$8.1 מיליארד בשנה על מחקר ופיתוח</strong> — כדי לשמור על קצב יחסית ל-NVIDIA, לא כדי לבנות יתרון בלתי תלוי. מדובר ב"חפיר מירוץ חימוש": כדי להישאר רלוונטיים חייבים לרוץ מהר יותר מהמתחרים, לא לישון בשקט. זה בדיוק הניגוד לחפיר בפטיאני קלאסי.
             </p>
 
             <!-- Buffett Quote #1 -->
@@ -808,7 +808,7 @@
 
             <div class="alert-strip warning">
                 <span class="alert-icon">⚠</span>
-                <span>ה-OCF נראה חזק — אך הוא מנופח. פיצוי מבוסס מניות ($1.65B) הוא הוצאה אמיתית שמדוודת בעלי המניות. לא מדובר ב"הוצאה שאינה במזומן" — מדובר בדילול שקט שמעביר עושר ממשקיעים לעובדים.</span>
+                <span>ה-OCF נראה חזק — אך הוא מנופח. פיצוי מבוסס מניות ($1.65B) הוא הוצאה אמיתית שמדללת את בעלי המניות. לא מדובר ב"הוצאה שאינה במזומן" — מדובר בדילול שקט שמעביר עושר ממשקיעים לעובדים.</span>
             </div>
 
             <!-- Waterfall FCF bridge -->
@@ -830,7 +830,7 @@
                     </div>
                 </div>
                 <div class="waterfall-row">
-                    <div class="waterfall-label">SBC (נייטרול דילול)</div>
+                    <div class="waterfall-label">SBC (ניטרול דילול)</div>
                     <div class="waterfall-value" style="color: var(--danger);">– $1.65B</div>
                     <div class="waterfall-bar-track">
                         <div class="waterfall-bar-fill" style="width:27%; background: var(--danger);"></div>
@@ -857,7 +857,7 @@
                 <div class="finding-label" style="color: var(--ice);">מסקנה — מבחן המזומן</div>
                 <div class="finding-text">
                     ה-FCF האמיתי של AMD הוא <span class="hl-amber">$3.88B</span> — לא $6.1B. ה-SBC של $1.65B (<span class="hl-danger">36% מהרווח הנקי</span>) הוא מנגנון דילול שקט שמחייב ניטרול.
-                    לא מדובר בחברה שמייצרת מזומן חופשי גבוה — מדובר בחברה שמחלקת חלק ניכר מהמזומן לעובדים בצורה שקופה פחות.
+                    לא מדובר בחברה שמייצרת מזומן חופשי גבוה — מדובר בחברה שמעבירה חלק ניכר מהמזומן לעובדים בצורה פחות שקופה.
                 </div>
             </div>
 
@@ -901,7 +901,7 @@
 
             <p class="prose-block">
                 ב-P/FCF של ~100x, על AMD לצמוח ב-<strong>29.1% בשנה במשך 10 שנים רצופות</strong> רק כדי שמשקיע יקבל תשואה של 10%.
-                זה אומר שהמשוק כבר "קנה" את כל הצמיחה העתידית. כל איכשהו מתחת לתוצאה האידיאלית — ניתוח תמחור שווי, האטה בשוק ה-AI, תגובת NVIDIA — ישנה הפסד.
+                זה אומר שהשוק כבר "קנה" את כל הצמיחה העתידית. כל סטייה מהתוצאה האידיאלית — האטה בשוק ה-AI, תגובה של NVIDIA, שינוי רגולטורי — תוביל להפסד.
             </p>
 
             <!-- Valuation table -->
@@ -952,7 +952,7 @@
 
             <div class="alert-strip warning">
                 <span class="alert-icon">⚠</span>
-                <span><strong>אין מרווח ביטחון:</strong> המשוק כבר "שילם" עבור כל תרחיש הצמיחה האופטימי. מחיר של $160 מניח שלא תהיה שום טעות, שום תחרות, שום האטה — במשך עשור שלם.</span>
+                <span><strong>אין מרווח ביטחון:</strong> השוק כבר "שילם" עבור תרחיש הצמיחה האופטימי ביותר. מחיר של $160 מניח שלא תהיה שום טעות, שום תחרות, שום האטה — במשך עשור שלם.</span>
             </div>
 
             <div class="finding-box">
@@ -1026,14 +1026,14 @@
 
             <div class="alert-strip info">
                 <span class="alert-icon">ℹ</span>
-                <span><strong>ההנהלה מצוינת טכנולוגית</strong> — Lisa Su ביצעה אחד הטורנרים המרשימים בהיסטוריה של תעשיית השבבים. אך מצוינות טכנולוגית אינה מחליפה הקצאת הון זהירה. ייתכן שהיא סוחרת כמו מהנדסת — לא כמו מקצאנית הון.</span>
+                <span><strong>ההנהלה מצוינת טכנולוגית</strong> — Lisa Su ביצעה את אחת המהפכות המרשימות בהיסטוריה של תעשיית השבבים. אך מצוינות טכנולוגית אינה מחליפה הקצאת הון זהירה. ייתכן שהיא נוהגת כמו מהנדסת — לא כמו משקיעת ערך.</span>
             </div>
 
             <div class="finding-box">
                 <div class="finding-label" style="color: var(--amber);">מסקנה — הקצאת הון</div>
                 <div class="finding-text">
                     ביצוע רכישות עצמיות ב-P/FCF של 70–100x הוא <span class="hl-danger">הרס ערך שקט</span>. ההנהלה מצוינת בבנייה טכנולוגית —
-                    אך ייתכן שפחות מיומנת בהקצאת הון במחירים מנופחים. זה לא פסול — זה טבעי למנהלי-מנהלי-טכנולוגיה. אך המשקיע צריך לדעת.
+                    אך ייתכן שפחות מיומנת בהקצאת הון במחירים מנופחים. זה לא פסול — זה טבעי למנהלי טכנולוגיה. אך המשקיע צריך לדעת.
                 </div>
             </div>
 
@@ -1053,7 +1053,7 @@
 
             <div class="alert-strip info">
                 <span class="alert-icon">ℹ</span>
-                <span>כדי לא לפספס את AMD לנצח, אנחנו צריכים להכניס את <strong>עקרון כוח הריבית דריבית של האיכות</strong>. סעיפים 01–04 מודדים ברזל קר. סעיף זה מודד את מה שהמספרים לא תופסים.</span>
+                <span>כדי לא לפספס את AMD לנצח, אנחנו צריכים להכניס את <strong>עקרון הריבית דריבית של האיכות</strong>. סעיפים 01–04 מודדים ברזל קר. סעיף זה מודד את מה שהמספרים לא תופסים.</span>
             </div>
 
             <!-- ── 5.1 Fair Price for Wonderful Business ── -->
@@ -1068,7 +1068,7 @@
                 </div>
 
                 <p class="prose-block">
-                    אם AMD היא <strong>"עסק נפלא"</strong> — וכפי שראינו ב-ROIC ובחפיר, היא כזו — אנחנו לא צריכים שולי ביטחון של 50% מהערך הנכסי.
+                    אם AMD היא <strong>"עסק נפלא"</strong> — וכפי שראינו ב-ROIC ובחפיר, היא כזו — אנחנו לא צריכים מרווח ביטחון של 50% מהערך הנכסי.
                     אנחנו יכולים להסתפק ב<strong>"מחיר הוגן"</strong>: מחיר שבו אם החברה פשוט תעשה את מה שהיא יודעת לעשות (<span class="hl-ice">15% צמיחה</span>), אנחנו נקבל את התשואה שלנו (WACC).
                 </p>
                 <p class="prose-block">
@@ -1096,7 +1096,7 @@
 
             <!-- ── 5.3 Capital-Light Growth ── -->
             <div style="margin-bottom:1.5rem;">
-                <div style="font-family:'IBM Plex Mono',monospace; font-size:0.6rem; letter-spacing:0.12em; color:var(--sage); text-transform:uppercase; margin-bottom:0.75rem;">5.3 · הוכחה מתמטית — הון חוזר</div>
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:0.6rem; letter-spacing:0.12em; color:var(--sage); text-transform:uppercase; margin-bottom:0.75rem;">5.3 · צמיחה קלילת הון</div>
 
                 <p class="prose-block">
                     באפט מדגיש שעסק שצומח <strong>בלי להזדקק להון נוסף רב</strong> הוא "הזהב הטהור" של ההשקעות.
@@ -1185,7 +1185,7 @@
 
     <!-- Footer -->
     <footer style="margin-top:3rem; text-align:center;">
-        <div style="font-family:'IBM Plex Mono',monospace; font-size:0.62rem; color:var(--muted); letter-spacing:0.08em; line-height:2;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--muted); letter-spacing:0.08em; line-height:2;">
             מחקר זה מיועד לצרכים חינוכיים בלבד · אינו מהווה ייעוץ השקעות<br>
             <a href="../index.html" style="color: var(--amber); text-decoration:none;">dubiwork.github.io/value-investing</a> · 2026
         </div>
