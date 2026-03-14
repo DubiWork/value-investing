@@ -55,6 +55,20 @@
         "insider selling",
         "FTC risk"
       ]
+    },
+    {
+      "file": "education/reverse-dcf.html",
+      "title": "Reverse DCF: The Value Investor's Secret Weapon",
+      "description": "Stop guessing the future — read the market's mind. Reverse DCF framework explained with a real AMD case study showing implied growth expectations.",
+      "category": "education",
+      "date": "2026-03-14",
+      "tags": [
+        "Reverse DCF",
+        "AMD",
+        "valuation",
+        "margin of safety",
+        "FCF"
+      ]
     }
   ]
 }

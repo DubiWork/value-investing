@@ -39,6 +39,7 @@ value-investing/
 
 | Date | Change |
 |------|--------|
+| 2026-03-14 | Added Reverse DCF educational guide with AMD case study |
 | 2026-03-14 | Added ZETA Global forensic investigation report (bear case / short thesis) |
 | 2026-03-13 | Added Firebase Analytics (edgar-value-miner project) to all pages for unified usage tracking |
 | 2026-03-12 | Added custom diamond favicon to index page |

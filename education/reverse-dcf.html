@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse DCF - הנשק הסודי של משקיע הערך</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body class="antialiased pb-12">
+
+    <header class="bg-slate-900 text-white pt-16 pb-12 px-6 shadow-lg relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/3"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="inline-flex items-center gap-2 bg-slate-800 text-emerald-400 px-3 py-1 rounded-full text-sm font-bold tracking-widest uppercase mb-6 border border-slate-700">
+                <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                מאגר כלים מנטליים
+            </div>
+            <h1 class="text-5xl md:text-6xl font-black mb-4 tracking-tight">Reverse DCF</h1>
+            <h2 class="text-2xl md:text-3xl font-light text-slate-300">איך להפסיק לנחש את העתיד ולהתחיל לקרוא את המחשבות של השוק.</h2>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 -mt-8 relative z-20">
+        
+        <div class="bg-white rounded-2xl shadow-xl p-8 mb-10 border border-slate-200">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-800">
+                <i data-lucide="refresh-ccw" class="text-indigo-600"></i>
+                מהפך מחשבתי: מההווה לעבר
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 opacity-70">
+                    <h4 class="font-bold text-rose-600 mb-2 flex items-center gap-2">
+                        <i data-lucide="x-circle" class="w-5 h-5"></i> המודל הרגיל (הניחוש)
+                    </h4>
+                    <p class="text-sm text-slate-600 mb-4">אתה מנחש כמה החברה תצמח, ועל בסיס זה המחשב פולט לך "מחיר יעד".</p>
+                    <div class="flex items-center justify-center gap-2 text-slate-400 text-sm font-mono">
+                        <span>ניחוש צמיחה</span> <i data-lucide="arrow-left" class="w-4 h-4"></i> <span class="text-slate-800 font-bold">מחיר מניה?</span>
+                    </div>
+                </div>
+
+                <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-200 shadow-sm">
+                    <h4 class="font-bold text-indigo-700 mb-2 flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i> Reverse DCF (העובדות)
+                    </h4>
+                    <p class="text-sm text-slate-700 mb-4">אתה מזין את המחיר האמיתי שיש היום בשוק, והמחשב אומר לך איזו צמיחה מגולמת בו.</p>
+                    <div class="flex items-center justify-center gap-2 text-indigo-400 text-sm font-mono">
+                        <span>מחיר קיים</span> <i data-lucide="arrow-left" class="w-4 h-4"></i> <span class="text-indigo-700 font-bold">צמיחה מגולמת?</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-10">
+            <h3 class="text-2xl font-bold mb-6 text-slate-800 flex items-center gap-2">
+                <i data-lucide="database" class="text-slate-500"></i>
+                3 הנתונים שאנחנו מזינים למודל
+            </h3>
+            <div class="space-y-4">
+                <div class="bg-white p-5 rounded-xl border border-slate-200 flex items-start gap-4">
+                    <div class="bg-blue-100 text-blue-600 p-3 rounded-lg"><i data-lucide="tag" class="w-6 h-6"></i></div>
+                    <div>
+                        <h4 class="font-bold text-lg">1. מחיר (שווי שוק)</h4>
+                        <p class="text-slate-600 text-sm">כמה עולה לקנות את כל החברה היום? (Market Cap).</p>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 flex items-start gap-4">
+                    <div class="bg-emerald-100 text-emerald-600 p-3 rounded-lg"><i data-lucide="dollar-sign" class="w-6 h-6"></i></div>
+                    <div>
+                        <h4 class="font-bold text-lg">2. המנוע היום (True FCF)</h4>
+                        <p class="text-slate-600 text-sm">כמה מזומן חופשי ואמיתי החברה מייצרת *היום*, אחרי הוצאות הון וקיזוז תגמול מניות (SBC)?</p>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 flex items-start gap-4">
+                    <div class="bg-amber-100 text-amber-600 p-3 rounded-lg"><i data-lucide="percent" class="w-6 h-6"></i></div>
+                    <div>
+                        <h4 class="font-bold text-lg">3. הדרישה שלנו (WACC)</h4>
+                        <p class="text-slate-600 text-sm">איזו תשואה שנתית אנחנו דורשים על הכסף שלנו? (רף משוכה קלאסי: 10%).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 text-white rounded-2xl p-8 mb-12 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
+            <h3 class="text-xl text-slate-300 mb-2 relative z-10">התוצאה שהמודל פולט:</h3>
+            <div class="text-4xl font-black text-emerald-400 mb-6 relative z-10">"מספר הקסם" (Implied Growth Rate)</div>
+            
+            <div class="bg-slate-800 border-l-4 border-emerald-500 p-6 rounded-r-lg relative z-10">
+                <h4 class="font-bold text-lg mb-2">חוק הברזל של שולי הביטחון:</h4>
+                <ul class="space-y-3 text-slate-300 text-sm">
+                    <li><i data-lucide="arrow-up-right" class="inline w-4 h-4 text-emerald-400"></i> אם החברה מסוגלת לצמוח <b>יותר</b> ממספר הקסם = <span class="text-white font-bold">יש שולי ביטחון (קונים)</span>.</li>
+                    <li><i data-lucide="minus" class="inline w-4 h-4 text-amber-400"></i> אם החברה תצמח <b>בדיוק</b> במספר הקסם = <span class="text-white font-bold">נקבל את תשואת ה-WACC (הוגן)</span>.</li>
+                    <li><i data-lucide="arrow-down-right" class="inline w-4 h-4 text-rose-400"></i> אם החברה תצמח <b>פחות</b> ממספר הקסם = <span class="text-white font-bold">שילמנו ביוקר, נשמיד ערך (בורחים)</span>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-2xl font-bold mb-6 text-slate-800 flex items-center gap-2 border-b-2 border-slate-200 pb-4">
+                <i data-lucide="microscope" class="text-slate-500"></i>
+                מקרה מבחן: קריאת המציאות של AMD (2025/2026)
+            </h3>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <div class="grid grid-cols-3 gap-4 mb-8 text-center">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                        <div class="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">שווי שוק</div>
+                        <div class="text-xl font-black text-slate-800">$386B</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                        <div class="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">True FCF</div>
+                        <div class="text-xl font-black text-slate-800">$3.88B</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                        <div class="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">רף תשואה</div>
+                        <div class="text-xl font-black text-slate-800">10%</div>
+                    </div>
+                </div>
+
+                <div class="text-center mb-8">
+                    <i data-lucide="arrow-down" class="mx-auto w-8 h-8 text-slate-300 mb-4"></i>
+                    <div class="inline-block bg-rose-50 border-2 border-rose-200 rounded-xl py-3 px-8">
+                        <div class="text-sm text-rose-800 font-bold mb-1">הצמיחה המגולמת בשוק (הציפייה)</div>
+                        <div class="text-4xl font-black text-rose-600">29.1% <span class="text-lg font-normal text-rose-800">בשנה, לעשור.</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-100 p-6 rounded-xl text-slate-700 text-sm leading-relaxed border-l-4 border-slate-400">
+                    <b class="text-slate-900 block mb-2 text-base">מבחן המציאות (Sanity Check):</b>
+                    אמנם AMD צמחה היסטורית ב-48%, אך חוק המספרים הגדולים נכנס לפעולה. 
+                    לצמוח ב-29.1% החל מסכום של 3.88 מיליארד דולר, אומר שבעוד 10 שנים החברה חייבת לייצר 
+                    <b>מעל 50 מיליארד דולר</b> של תזרים מזומנים חופשי נקי בכל שנה. זהו גודל השמור כיום לענקיות בודדות כמו גוגל או מיקרוסופט. 
+                    <br><br>
+                    <b>המסקנה:</b> המניה מתומחרת לשלמות (Priced for Perfection). כל פספוס קטן בתחזיות יוביל לקריסת מכפילים כואבת. למשקיע ערך שמרן - אין כאן שולי ביטחון.
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+<!-- Back to Home -->
+<a href="/value-investing/" style="position:fixed;bottom:24px;left:24px;z-index:9999;background:#1e293b;color:#fff;padding:10px 20px;border-radius:999px;font-family:Inter,sans-serif;font-size:14px;font-weight:600;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.15);display:flex;align-items:center;gap:8px;transition:all 0.2s ease;" onmouseover="this.style.background='#334155';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#1e293b';this.style.transform='translateY(0)'">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Home
+</a>
+<!-- Firebase Analytics -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+  import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyAG6999ZeGilevL_ZEKXsCkWlBS2gKeD_g",
+    authDomain: "edgar-value-miner.firebaseapp.com",
+    projectId: "edgar-value-miner",
+    storageBucket: "edgar-value-miner.firebasestorage.app",
+    messagingSenderId: "125102988170",
+    appId: "1:125102988170:web:0aa5579826e2bbd31d4673",
+    measurementId: "G-6R9HEDXKWF"
+  };
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  logEvent(analytics, "page_view", { page_title: document.title, page_location: window.location.href });
+</script>
+</body>
+</html>
