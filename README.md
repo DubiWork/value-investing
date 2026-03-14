@@ -16,6 +16,8 @@ A collection of interactive investment research pages — thesis deep dives, edu
 - **[ZETA Global 2025: The Cash Truth Test](https://dubiwork.github.io/value-investing/thesis/zeta-thesis-2026.html)** — Bull vs Bear debate analyzing ZETA's cash flow, dilution, balance sheet quality, and growth sources
 - **[The Value Investor's Compass: Incremental ROIC](https://dubiwork.github.io/value-investing/education/inc-roic.html)** — WACC, ROIC, and Incremental ROIC explained with real-world analogies and a ZETA case study
 - **[ZETA Global: Forensic Investigation Report](https://dubiwork.github.io/value-investing/thesis/zeta-forensic-2026.html)** — Deep bear case covering consent farms, revenue round-tripping, FCF illusion, M&A smoke screen, and insider selling
+- **[Reverse DCF: The Value Investor's Secret Weapon](https://dubiwork.github.io/value-investing/education/reverse-dcf.html)** — Reverse DCF framework explained with a real AMD case study
+- **[AMD Investment Thesis 2026](https://dubiwork.github.io/value-investing/thesis/amd-thesis-2026.html)** — Buffett-lens analysis: business moat, true FCF, Reverse DCF valuation, capital allocation. HOLD at $160, buy zone $85–$113
 
 ## How It Works
 
@@ -39,6 +41,7 @@ value-investing/
 
 | Date | Change |
 |------|--------|
+| 2026-03-15 | Added AMD Investment Thesis 2026 — "Industrial Financial Noir" design with Buffett-lens analysis |
 | 2026-03-14 | Added Reverse DCF educational guide with AMD case study |
 | 2026-03-14 | Added ZETA Global forensic investigation report (bear case / short thesis) |
 | 2026-03-13 | Added Firebase Analytics (edgar-value-miner project) to all pages for unified usage tracking |
