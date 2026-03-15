@@ -85,6 +85,24 @@
         "Reverse DCF",
         "margin of safety"
       ]
+    },
+    {
+      "file": "thesis/amd-forensic-2026.html",
+      "title": "AMD Strategic Research: Pre-Q1 2026 Deep Dive",
+      "description": "Comprehensive forensic analysis merging two research reports: market share, AI partnerships (Meta 6GW deal), gross margin path to 60%, dilution risks (320M warrants), and geopolitical TSMC exposure.",
+      "category": "thesis",
+      "date": "2026-03-15",
+      "tags": [
+        "AMD",
+        "Data Center",
+        "AI",
+        "Meta",
+        "TSMC",
+        "dilution",
+        "warrants",
+        "EPYC",
+        "Instinct"
+      ]
     }
   ]
 }

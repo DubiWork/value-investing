@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMD — מחקר אסטרטגי מקיף 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --bg:        #F8FAFC;
+      --surface:   #FFFFFF;
+      --border:    #E2E8F0;
+      --indigo:    #4F46E5;
+      --indigo-light: #EEF2FF;
+      --indigo-mid: #6366F1;
+      --emerald:   #059669;
+      --emerald-light: #ECFDF5;
+      --rose:      #E11D48;
+      --rose-light:#FFF1F2;
+      --sky:       #0284C7;
+      --sky-light: #F0F9FF;
+      --amber:     #D97706;
+      --amber-light:#FFFBEB;
+      --text-heading: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-body);
+      line-height: 1.75;
+      font-size: 1.05rem;
+      direction: rtl;
+    }
+
+    .mono { font-family: 'IBM Plex Mono', monospace; }
+
+    /* ── HEADER ──────────────────────────────── */
+    .page-header {
+      background: linear-gradient(135deg, #4F46E5 0%, #3730A3 100%);
+      color: white;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+      color: #fff;
+    }
+    .page-header p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 1rem;
+    }
+    .ticker-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.3rem 1rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+    .date-tag {
+      display: inline-block;
+      margin-inline-start: 0.75rem;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.9rem;
+    }
+
+    /* ── TABS ────────────────────────────────── */
+    .tab-nav {
+      background: var(--surface);
+      border-bottom: 2px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .tab-nav-inner {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 1rem;
+    }
+    .tab-btn {
+      padding: 1rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-body);
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      white-space: nowrap;
+      font-family: 'Heebo', sans-serif;
+    }
+    .tab-btn:hover { color: var(--indigo); }
+    .tab-btn.active {
+      color: var(--indigo);
+      border-bottom-color: var(--indigo);
+      background: var(--indigo-light);
+    }
+
+    /* ── CONTENT ─────────────────────────────── */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .content-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* ── SECTION TITLE ───────────────────────── */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-title .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--indigo);
+      flex-shrink: 0;
+    }
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--text-body);
+      line-height: 1.8;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-right: 4px solid var(--indigo);
+      border-radius: 0.5rem;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ── KPI GRID ────────────────────────────── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .kpi-card:hover {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .kpi-label {
+      font-size: 0.85rem;
+      color: var(--text-body);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    .kpi-value {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.2;
+    }
+    .kpi-sub {
+      font-size: 0.82rem;
+      color: var(--emerald);
+      font-weight: 600;
+      margin-top: 0.25rem;
+    }
+    .kpi-sub.negative { color: var(--rose); }
+    .kpi-sub.neutral { color: var(--sky); }
+
+    /* ── TABLES ──────────────────────────────── */
+    .data-table-wrap {
+      overflow-x: auto;
+      margin-bottom: 1.75rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      font-size: 0.97rem;
+    }
+    .data-table th {
+      background: #F1F5F9;
+      color: var(--text-heading);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.85rem 1.1rem;
+      text-align: right;
+      border-bottom: 2px solid var(--border);
+    }
+    .data-table td {
+      padding: 0.8rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-body);
+      font-size: 0.97rem;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: #EEF2FF; }
+    .data-table .mono { font-size: 0.93rem; }
+    .data-table .positive { color: var(--emerald); font-weight: 600; }
+    .data-table .negative { color: var(--rose); font-weight: 600; }
+    .data-table .highlight-row td { background: var(--indigo-light); }
+
+    /* ── CARDS ───────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.3rem 1.4rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      margin-bottom: 1rem;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 0.5rem;
+    }
+    .card-body {
+      font-size: 1rem;
+      color: var(--text-body);
+      line-height: 1.75;
+    }
+
+    /* ── RISK CARDS ──────────────────────────── */
+    .risk-card {
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .risk-card.red {
+      background: var(--rose-light);
+      border: 1px solid #FECDD3;
+      border-right: 4px solid var(--rose);
+    }
+    .risk-card.amber {
+      background: var(--amber-light);
+      border: 1px solid #FDE68A;
+      border-right: 4px solid var(--amber);
+    }
+    .risk-card.sky {
+      background: var(--sky-light);
+      border: 1px solid #BAE6FD;
+      border-right: 4px solid var(--sky);
+    }
+    .risk-card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .risk-card-body {
+      font-size: 0.98rem;
+      color: var(--text-body);
+      line-height: 1.75;
+    }
+
+    /* ── COLLAPSIBLE ─────────────────────────── */
+    .collapsible-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.55rem 1rem;
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: var(--indigo);
+      cursor: pointer;
+      font-family: 'Heebo', sans-serif;
+      margin-bottom: 0.75rem;
+      transition: background 0.2s;
+    }
+    .collapsible-btn:hover { background: var(--indigo-light); }
+    .collapsible-btn .arrow { transition: transform 0.25s; display: inline-block; }
+    .collapsible-btn.open .arrow { transform: rotate(180deg); }
+    .collapsible-content {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease;
+    }
+    .collapsible-content.open { max-height: 2000px; }
+    .collapsible-inner {
+      background: var(--indigo-light);
+      border: 1px solid #C7D2FE;
+      border-radius: 0.5rem;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .collapsible-inner ul {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .collapsible-inner ul li {
+      padding: 0.55rem 0;
+      padding-right: 1.2rem;
+      position: relative;
+      font-size: 1rem;
+      color: var(--text-body);
+      border-bottom: 1px solid #C7D2FE;
+      line-height: 1.75;
+    }
+    .collapsible-inner ul li:last-child { border-bottom: none; }
+    .collapsible-inner ul li::before {
+      content: "◆";
+      position: absolute;
+      right: 0;
+      color: var(--indigo);
+      font-size: 0.78rem;
+      top: 0.55rem;
+    }
+
+    /* ── CHART WRAPPER ───────────────────────── */
+    .chart-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .chart-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    /* ── INFO BOX ────────────────────────────── */
+    .info-box {
+      border-radius: 0.75rem;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.75rem;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+    .info-box.emerald {
+      background: var(--emerald-light);
+      border: 1px solid #A7F3D0;
+      border-right: 4px solid var(--emerald);
+      color: #065F46;
+    }
+    .info-box.indigo {
+      background: var(--indigo-light);
+      border: 1px solid #C7D2FE;
+      border-right: 4px solid var(--indigo);
+      color: #312E81;
+    }
+    .info-box.rose {
+      background: var(--rose-light);
+      border: 1px solid #FECDD3;
+      border-right: 4px solid var(--rose);
+      color: #881337;
+    }
+    .info-box.amber {
+      background: var(--amber-light);
+      border: 1px solid #FDE68A;
+      border-right: 4px solid var(--amber);
+      color: #78350F;
+    }
+    .info-box strong { font-weight: 700; }
+    .info-box-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── VERDICT BOX ─────────────────────────── */
+    .verdict-box {
+      background: var(--indigo);
+      color: white;
+      border-radius: 1rem;
+      padding: 2rem 2rem;
+      margin-bottom: 1.75rem;
+      text-align: center;
+    }
+    .verdict-box h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+    .verdict-box p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,1);
+    }
+
+    /* ── WATCHLIST ───────────────────────────── */
+    .watchlist-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 0.85rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: box-shadow 0.2s;
+    }
+    .watchlist-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+    .watchlist-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--indigo);
+      flex-shrink: 0;
+      min-width: 1.8rem;
+    }
+    .watchlist-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 0.25rem;
+    }
+    .watchlist-desc {
+      font-size: 0.97rem;
+      color: var(--text-body);
+      line-height: 1.75;
+    }
+
+    /* ── DCF BOX ─────────────────────────────── */
+    .dcf-box {
+      background: #FAFAFA;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.75rem;
+    }
+    .dcf-box .dcf-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 0.75rem;
+    }
+    .dcf-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+    .dcf-row:last-child { border-bottom: none; }
+    .dcf-label { color: var(--text-body); }
+    .dcf-val {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      color: var(--text-heading);
+    }
+
+    /* ── SBC COMPARISON ──────────────────────── */
+    .bar-compare {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.3rem 1.4rem;
+      margin-bottom: 1.75rem;
+    }
+    .bar-row {
+      margin-bottom: 0.85rem;
+    }
+    .bar-row-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-body);
+      margin-bottom: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .bar-track {
+      height: 22px;
+      background: #F1F5F9;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 1s ease;
+    }
+
+    /* ── DIVIDER ─────────────────────────────── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.75rem 0;
+    }
+
+    /* ── SUBSECTION LABEL ────────────────────── */
+    .sub-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--indigo);
+      margin-bottom: 0.6rem;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 640px) {
+      .page-header h1 { font-size: 1.5rem; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      .tab-btn { padding: 0.75rem 0.9rem; font-size: 0.88rem; }
+      .content-wrap { padding: 1.25rem 1rem 3rem; }
+      .watchlist-card { flex-direction: column; gap: 0.4rem; }
+      .dcf-row { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+    }
+    @media (max-width: 400px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── FADE IN ─────────────────────────────── */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .tab-panel.active { animation: fadeIn 0.25s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════ HEADER ════════════════ -->
+<header class="page-header">
+  <h1>מחקר אסטרטגי מקיף: AMD לקראת דוחות Q1 2026</h1>
+  <p>ניתוח נתחי שוק, שולי רווח, מבנה הון וסיכונים גיאופוליטיים</p>
+  <div>
+    <span class="ticker-badge">AMD · NASDAQ</span>
+    <span class="date-tag">מרץ 2026</span>
+  </div>
+</header>
+
+<!-- ════════════════ TAB NAV ════════════════ -->
+<nav class="tab-nav" role="tablist">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" data-tab="datacenter" role="tab">מרכזי נתונים</button>
+    <button class="tab-btn" data-tab="ai" role="tab">בינה מלאכותית</button>
+    <button class="tab-btn" data-tab="margins" role="tab">שולי רווח</button>
+    <button class="tab-btn" data-tab="capital" role="tab">מבנה הון</button>
+    <button class="tab-btn" data-tab="risks" role="tab">סיכונים</button>
+    <button class="tab-btn" data-tab="outlook" role="tab">מסקנות</button>
+  </div>
+</nav>
+
+<!-- ════════════════ PANELS ════════════════ -->
+<main>
+
+<!-- ── TAB 1: Data Center ───────────────── -->
+<div class="tab-panel active" id="panel-datacenter">
+  <div class="content-wrap">
+
+    <div class="section-title"><span class="dot"></span>מרכזי נתונים — מנוע הצמיחה המרכזי</div>
+
+    <p class="section-lead">
+      מרכז הכובד של AMD עבר למגזר ה-Data Center, שהפך למנוע הצמיחה המרכזי. בשנת 2025, הכנסות המגזר הגיעו לשיא של 16.6 מיליארד דולר — עלייה של 32% לעומת 2024. AMD רשמה שיא היסטורי בנתח שוק השרתים: 41.3% מהכנסות השרתים ב-Q4 2025, לעומת 36.4% שנה קודם.
+    </p>
+
+    <!-- KPI Grid -->
+    <div class="sub-label">מדדי מפתח 2025</div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">הכנסות Data Center 2025</div>
+        <div class="kpi-value mono">$16.6B</div>
+        <div class="kpi-sub">+32% שנה-על-שנה</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">נתח שוק הכנסות שרתים</div>
+        <div class="kpi-value mono">41.3%</div>
+        <div class="kpi-sub neutral">Q4 2025 (מ-36.4%)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">נתח שוק יחידות</div>
+        <div class="kpi-value mono">28.8%</div>
+        <div class="kpi-sub neutral">Q4 2025</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">מופעי ענן AMD</div>
+        <div class="kpi-value mono">~1,600</div>
+        <div class="kpi-sub">+50% שנה-על-שנה</div>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="sub-label">השוואה: AMD EPYC מול Intel Xeon — Q4 2025</div>
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>מדד</th>
+            <th>AMD EPYC</th>
+            <th>Intel Xeon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>הכנסות רבעוניות</td>
+            <td class="mono positive">$5.4B</td>
+            <td class="mono">$4.7B</td>
+          </tr>
+          <tr>
+            <td>צמיחה שנתית</td>
+            <td class="positive">39%</td>
+            <td>9%</td>
+          </tr>
+          <tr>
+            <td>שולי רווח תפעולי</td>
+            <td class="positive">33%</td>
+            <td class="negative">נמוך משמעותית</td>
+          </tr>
+          <tr>
+            <td>מוצר דגל</td>
+            <td>Turin (Zen 5)</td>
+            <td>Diamond Rapids</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Collapsible: key points -->
+    <button class="collapsible-btn" onclick="toggleCollapse(this)">
+      <span class="arrow">▼</span> יתרונות תחרותיים מרכזיים
+    </button>
+    <div class="collapsible-content">
+      <div class="collapsible-inner">
+        <ul>
+          <li>EPYC Turin (Zen 5) — יתרון ביצועים של פי 1.45 על Xeon 6 Granite Rapids בעומסי עבודה מעשיים</li>
+          <li>ארכיטקטורת Chiplet מאפשרת יותר ליבות, חיסכון משמעותי באנרגיה ויכולת הרחבה טובה יותר</li>
+          <li>Hyperscalers (AWS, Google, Microsoft) אימצו EPYC בגלל יתרון TCO (Total Cost of Ownership)</li>
+          <li>EPYC Venice (Zen 6) צפוי להיות מושק ב-H2 2026 עם ביקוש מוקדם גבוה מלקוחות הענן</li>
+          <li>נתח שוק יחידות (28.8%) נמוך מנתח הכנסות (41.3%) — מעיד על ASP גבוה יותר לשרת</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── TAB 2: AI ─────────────────────────── -->
+<div class="tab-panel" id="panel-ai">
+  <div class="content-wrap">
+
+    <div class="section-title"><span class="dot"></span>בינה מלאכותית — מתחרה אמיתי ל-NVIDIA</div>
+
+    <p class="section-lead">
+      AMD הפכה לשחקנית קריטית בשוק ה-GPU ל-AI. הכנסות ממאיצי AI זינקו מ-$2B ב-2023 ל-$10B+ ב-2025. סדרת Instinct MI300 / MI325 / MI350 מהווה את החלופה המשמעותית היחידה ל-NVIDIA בשוק מחשוב ה-AI ברמת Enterprise.
+    </p>
+
+    <!-- KPI Grid -->
+    <div class="sub-label">מדדי מפתח AI</div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">הכנסות AI 2025</div>
+        <div class="kpi-value mono">>$10B</div>
+        <div class="kpi-sub">מ-$2B ב-2023</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">MI300 — Meta</div>
+        <div class="kpi-value mono">173K</div>
+        <div class="kpi-sub neutral">יחידות פרוסות</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">עסקת Meta — ערך</div>
+        <div class="kpi-value mono">$60-100B</div>
+        <div class="kpi-sub neutral">6GW / 5 שנים</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">MI450 — תהליך</div>
+        <div class="kpi-value mono">2nm</div>
+        <div class="kpi-sub neutral">TSMC / H2 2026</div>
+      </div>
+    </div>
+
+    <!-- Key deals -->
+    <div class="sub-label">עסקאות אסטרטגיות מרכזיות</div>
+
+    <div class="card">
+      <div class="card-title">Meta — עסקה רב-שנתית מקיפה</div>
+      <div class="card-body">
+        הסכם לאספקת 6GW של כוח מחשוב על בסיס מאיצי AMD, בשווי מוערך של $60–100B לאורך 5 שנים. העסקה כוללת מערכת Helios (Rack-Scale) תחת פרויקט OCP, ו-MI450 מותאם אישית לצרכי Meta. Meta כבר פרסה 173,000 יחידות MI300 בתשתית הייצור שלה.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Microsoft Azure — אימוץ נרחב ל-OpenAI ו-Copilot</div>
+      <div class="card-body">
+        Microsoft אימצה MI300X ב-Azure עבור עומסי עבודה של OpenAI ו-Copilot. MI300X (192GB HBM3) ו-MI325X (288GB HBM3e) מציעים יתרון זיכרון משמעותי על H100/H200 של NVIDIA — קריטי ל-LLM Inference ב-Context Window גדול.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">OpenAI — הסכם מקביל ל-Meta</div>
+      <div class="card-body">
+        עסקה דומה במבנה לעסקת Meta: 6GW של כוח מחשוב. OpenAI קיבלה בנוסף 160 מיליון Warrants על מניות AMD — המהווים תמריץ אסטרטגי להגדלת הרכישות ולצמיחת הביקוש.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ROCm info box -->
+    <div class="sub-label">פלטפורמת תוכנה</div>
+    <div class="info-box emerald">
+      <div class="info-box-title">ROCm 7.0 — צמצום הפער מול CUDA</div>
+      ROCm 7.0 הושק עם שיפור של <strong>×4.6</strong> בביצועי Inference לעומת גרסה קודמת. הורדות הפלטפורמה גדלו <strong>×10</strong> בשנת 2025. הפער מול CUDA צומצם ל-10–30% ברוב עומסי העבודה הנפוצים. הפלטפורמה תומכת ב-PyTorch, vLLM, ו-JAX — מה שמאפשר לצוותי AI להמיר קוד ללא שכתוב מאפס.
+    </div>
+
+    <!-- Collapsible: product roadmap -->
+    <button class="collapsible-btn" onclick="toggleCollapse(this)">
+      <span class="arrow">▼</span> מפת דרכים — Instinct MI Series
+    </button>
+    <div class="collapsible-content">
+      <div class="collapsible-inner">
+        <ul>
+          <li>MI300X (2024) — 192GB HBM3, כבר בייצור המוני, פרוס ב-Azure ו-Meta</li>
+          <li>MI325X (2025) — 288GB HBM3e, יתרון זיכרון ברור על H200</li>
+          <li>MI350 (2025) — שיפור ביצועי Compute, ייצור N3 TSMC</li>
+          <li>MI450 (H2 2026) — 2nm TSMC, מותאם אישית ל-Meta ו-OpenAI, מוצר הדגל הבא</li>
+          <li>MI500 (2027) — בפיתוח, הנחת עבודה: Rack-Scale כברירת מחדל</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── TAB 3: Margins ────────────────────── -->
+<div class="tab-panel" id="panel-margins">
+  <div class="content-wrap">
+
+    <div class="section-title"><span class="dot"></span>שולי רווח — תהליך שינוי מבני</div>
+
+    <p class="section-lead">
+      שולי הרווח הגולמי של AMD נמצאים בתהליך שינוי מבני. שולי ה-GAAP עלו מ-46% ב-2023 ל-50% ב-2025. שולי Non-GAAP "נקיים" (ללא אירועים חד-פעמיים) עומדים על 55%. המגמה נובעת ממעבר לתמהיל מוצרים עם ערך גבוה יותר.
+    </p>
+
+    <!-- Margin Chart -->
+    <div class="chart-wrap">
+      <div class="chart-title">התפתחות שולי הרווח הגולמי — GAAP ו-Non-GAAP (%)</div>
+      <canvas id="marginChart" height="280"></canvas>
+    </div>
+
+    <!-- Revenue Table -->
+    <div class="sub-label">סיכום הכנסות שנתי</div>
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>שנה</th>
+            <th>סך הכנסות ($B)</th>
+            <th>רווח גולמי GAAP</th>
+            <th>הכנסות DC ($B)</th>
+            <th>הכנסות Embedded ($B)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono font-bold">2021</td>
+            <td class="mono">$16.4</td>
+            <td>48%</td>
+            <td class="mono">$3.7*</td>
+            <td class="mono">$0.2*</td>
+          </tr>
+          <tr>
+            <td class="mono font-bold">2022</td>
+            <td class="mono">$23.6</td>
+            <td>45%</td>
+            <td class="mono">$6.0</td>
+            <td class="mono">$4.6</td>
+          </tr>
+          <tr>
+            <td class="mono font-bold">2023</td>
+            <td class="mono">$22.7</td>
+            <td>46%</td>
+            <td class="mono">$6.5</td>
+            <td class="mono">$5.3</td>
+          </tr>
+          <tr>
+            <td class="mono font-bold">2024</td>
+            <td class="mono">$25.8</td>
+            <td>49%</td>
+            <td class="mono">$12.6</td>
+            <td class="mono">$3.6</td>
+          </tr>
+          <tr class="highlight-row">
+            <td class="mono font-bold">2025</td>
+            <td class="mono positive">$34.6</td>
+            <td class="positive">50%</td>
+            <td class="mono positive">$16.6</td>
+            <td class="mono">$3.5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.82rem; color:var(--text-body); margin-top:-1.2rem; margin-bottom:1.5rem;">* נתוני 2021 — הערכה לפני פורמט הדיווח הנוכחי</p>
+
+    <!-- Path to 60% collapsible -->
+    <button class="collapsible-btn" onclick="toggleCollapse(this)">
+      <span class="arrow">▼</span> הדרך ל-60% שולי רווח גולמי
+    </button>
+    <div class="collapsible-content">
+      <div class="collapsible-inner">
+        <ul>
+          <li><strong>תמהיל מוצרים:</strong> DC + Embedded = שולי רווח גבוהים. DC כבר 48% מסך ההכנסות ועולה</li>
+          <li><strong>ירידת Gaming:</strong> קונסולות בשולי רווח נמוכים יורדות — מעלה את הממוצע</li>
+          <li><strong>תוכנה ו-Rack-Scale:</strong> ROCm + Helios = פרמיה גבוהה יותר על מוצרים</li>
+          <li><strong>יעד החברה:</strong> 55–58% בטווח של 3–5 שנים. 60% תלוי בהצלחת MI450 ו-MI500</li>
+          <li><strong>לחצי נגד:</strong> HBM3e / HBM4 עולים במחיר, ותחרות מחירים עם NVIDIA עלולה לכווץ שוליים</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── TAB 4: Capital Structure ──────────── -->
+<div class="tab-panel" id="panel-capital">
+  <div class="content-wrap">
+
+    <div class="section-title"><span class="dot"></span>מבנה הון — דילול ורכישות עצמיות</div>
+
+    <p class="section-lead">
+      AMD מפעילה תוכנית רכישה עצמית אקטיבית, אך ה-Buybacks ($1.3B ב-2025) לא מכסים במלואם את ה-SBC ($1.6B). הדילול המהותי מגיע מ-Warrants שניתנו ל-Meta ו-OpenAI — 320 מיליון מניות בסה"כ (כ-20% דילול פוטנציאלי) במחיר של סנט אחד בלבד.
+    </p>
+
+    <!-- Share count chart -->
+    <div class="chart-wrap">
+      <div class="chart-title">מניות מדוללות — ספירה שנתית (מיליארדים)</div>
+      <canvas id="sharesChart" height="240"></canvas>
+    </div>
+
+    <!-- SBC vs Buybacks -->
+    <div class="sub-label">SBC מול רכישות עצמיות</div>
+    <div class="bar-compare">
+      <div class="bar-row">
+        <div class="bar-row-label">
+          <span>SBC 2023</span>
+          <span class="mono" style="color:var(--rose)">$1.384B</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:69.2%; background:var(--rose);"></div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label">
+          <span>SBC 2024</span>
+          <span class="mono" style="color:var(--rose)">$1.407B</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:70.4%; background:var(--rose);"></div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label">
+          <span>SBC 2025</span>
+          <span class="mono" style="color:var(--rose)">$1.638B</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:81.9%; background:var(--rose);"></div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label">
+          <span>Buybacks 2025 (12.4M מניות)</span>
+          <span class="mono" style="color:var(--emerald)">$1.3B</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:65%; background:var(--emerald);"></div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label">
+          <span>יתרת אישור Buyback</span>
+          <span class="mono" style="color:var(--sky)">$9.4B</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:100%; background:var(--sky);"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Warning box -->
+    <div class="info-box rose">
+      <div class="info-box-title">⚠ אזהרה: Warrants ללקוחות אסטרטגיים</div>
+      Meta ו-OpenAI קיבלו כל אחת <strong>160 מיליון</strong> Warrants על מניות AMD — סה"כ <strong>320 מיליון מניות</strong> במחיר של <strong>$0.01 למניה</strong>. המימוש מותנה בהשגת יעדי רכישה (מ-1GW עד 6GW) ובמחיר מניה מסוים ($600). אם ימומשו במלואם — הדבר ייצור דילול של כ-<strong>20%</strong> לבעלי המניות הנוכחיים.
+    </div>
+
+    <!-- Collapsible: full capital analysis -->
+    <button class="collapsible-btn" onclick="toggleCollapse(this)">
+      <span class="arrow">▼</span> ניתוח מבנה הון מלא
+    </button>
+    <div class="collapsible-content">
+      <div class="collapsible-inner">
+        <ul>
+          <li>ספירת מניות גדלה בהדרגה: 1.612B (2022) → 1.636B (2025) — צמיחה "רגילה" מתונה של ~1.5%</li>
+          <li>ה-Buybacks נועדו לקזז את ה-SBC, אך לא מכסים במלואם את כל ההקצאות</li>
+          <li>ה-Warrants אינם מגולמים בספירת המניות הנוכחית — מדובר בדילול עתידי פוטנציאלי</li>
+          <li>מבנה ה-Warrants הוא שיטה עסקית חכמה: מתמרץ לקוחות להגדיל רכישות, אך מעניש בעלי מניות</li>
+          <li>יתרת $9.4B באישור Buyback מספיקה לביצוע מדיניות אגרסיבית — אם ההנהלה תבחר בכך</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── TAB 5: Risks ──────────────────────── -->
+<div class="tab-panel" id="panel-risks">
+  <div class="content-wrap">
+
+    <div class="section-title"><span class="dot"></span>סיכונים גיאופוליטיים ותחרותיים</div>
+
+    <p class="section-lead">
+      AMD תלויה ב-100% ב-TSMC לייצור שבבים מתקדמים. כל הסלמה בטיוואן מהווה Single Point of Failure לתוצאות החברה. בנוסף, הגבלות ייצוא לסין גרמו לפגיעה של $800M ב-2025, ואינטל מנסה לחזור לרלוונטיות עם תהליך 18A.
+    </p>
+
+    <!-- Risk cards -->
+    <div class="sub-label">סיכונים מרכזיים</div>
+
+    <div class="risk-card red">
+      <div class="risk-card-title">
+        <span style="font-size:1.2rem;">⚡</span>
+        תלות מלאה ב-TSMC — סיכון גיאופוליטי
+      </div>
+      <div class="risk-card-body">
+        100% מהייצור המתקדם של AMD נעשה בטיוואן. MI450 מיוצר ב-2nm TSMC — אין חלופה מוכנה. מפעלי TSMC Arizona יהיו מוכנים לא לפני 2027, ואף אז בתפוקה מוגבלת. תרחיש של הסלמה בטיוואן ישבית את כל הייצור.
+      </div>
+    </div>
+
+    <div class="risk-card amber">
+      <div class="risk-card-title">
+        <span style="font-size:1.2rem;">🌐</span>
+        סין ורגולציה — $800M נמחקו ב-2025
+      </div>
+      <div class="risk-card-body">
+        הגבלות ייצוא ל-MI308 ומוצרים מתקדמים אחרים פגעו ב-$800M מהכנסות 2025. סגמנט המהווה כ-15% מההכנסות נמצא תחת לחץ מתמיד. אי-יציבות רגולטורית מקשה על תכנון עסקי לטווח בינוני-ארוך.
+      </div>
+    </div>
+
+    <div class="risk-card sky">
+      <div class="risk-card-title">
+        <span style="font-size:1.2rem;">🏭</span>
+        אינטל 18A — תהליך ייצור אמריקאי
+      </div>
+      <div class="risk-card-body">
+        Intel Foundry מפתחת תהליך 18A על אדמת ארה"ב, עם Microsoft ו-AWS כלקוחות עוגן. Yields עדיין נמוכים ולא תחרותיים מסחרית. ההערכה היא 2–3 שנים נוספות עד יציבות. אם יצליח — מאיים על יתרון ה-Chiplet של AMD בשוק השרתים.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Collapsible: competitive analysis -->
+    <button class="collapsible-btn" onclick="toggleCollapse(this)">
+      <span class="arrow">▼</span> ניתוח תרחישי סיכון מורחב
+    </button>
+    <div class="collapsible-content">
+      <div class="collapsible-inner">
+        <ul>
+          <li><strong>תרחיש בסיס:</strong> TSMC ממשיכה לפעול, AMD צומחת כפי שתוכנן. Warrants לא מומשו במלואם</li>
+          <li><strong>תרחיש סיכון גבוה:</strong> סגר / הסלמה בטיוואן → עצירת ייצור MI450 → צניחת הכנסות 30%+</li>
+          <li><strong>תרחיש סיכון בינוני:</strong> NVIDIA מורידה מחירים בצורה אגרסיבית → לחץ על שולי AMD → ערעור על יתרון ה-TCO</li>
+          <li><strong>סיכון רגולטורי נוסף:</strong> הרחבת הגבלות ייצוא גם למדינות נוספות (לא רק סין)</li>
+          <li><strong>סיכון ביצועי תוכנה:</strong> CUDA נשארת דומיננטית — ROCm צריכה לשמור על קצב שיפור של ×4+ בשנה</li>
+          <li><strong>גורם מאזן:</strong> תהליכי TSMC 2nm הם הבסיס ל-MI450 — אין מתחרה בשנה הקרובה</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── TAB 6: Outlook ────────────────────── -->
+<div class="tab-panel" id="panel-outlook">
+  <div class="content-wrap">
+
+    <div class="section-title"><span class="dot"></span>מסקנות ומבט קדימה — 2026</div>
+
+    <p class="section-lead">
+      AMD נכנסת ל-2026 בשיא כוחה. תחזית Q1 2026: $9.8B הכנסות. H2 2026 צפוי לזינוק משמעותי עם השקת MI450 ו-EPYC Venice — שני מוצרים עם ביקוש מוקדם חזק.
+    </p>
+
+    <!-- Watchlist -->
+    <div class="sub-label">4 גורמים לעקוב אחריהם</div>
+
+    <div class="watchlist-card">
+      <div class="watchlist-num">01</div>
+      <div>
+        <div class="watchlist-title">האצה ב-H2 2026: MI450 + EPYC Venice</div>
+        <div class="watchlist-desc">משלוחי MI450 ל-Meta ו-OpenAI בשילוב השקת EPYC Venice (Zen 6) הם הזרזים המרכזיים לצמיחה. האצה תעיד על יכולת הביצוע של AMD.</div>
+      </div>
+    </div>
+
+    <div class="watchlist-card">
+      <div class="watchlist-num">02</div>
+      <div>
+        <div class="watchlist-title">Helios — מכירת פתרונות Rack-Scale שלמים</div>
+        <div class="watchlist-desc">אם AMD מצליחה למכור פתרונות תשתית שלמים (ולא רק שבבים), הדבר משדרג את מודל ההכנסות ושולי הרווח באופן מהותי. יש לעקוב אחר: עסקאות Helios חדשות.</div>
+      </div>
+    </div>
+
+    <div class="watchlist-card">
+      <div class="watchlist-num">03</div>
+      <div>
+        <div class="watchlist-title">OpEx Discipline — מינוף תפעולי</div>
+        <div class="watchlist-desc">האם AMD מצליחה לייצר Leverage תפעולי — כלומר, הכנסות גדלות מהר יותר מהוצאות? מרכזי נתונים ו-AI הם זרזים טובים, אך R&D ממשיך לצמוח.</div>
+      </div>
+    </div>
+
+    <div class="watchlist-card">
+      <div class="watchlist-num">04</div>
+      <div>
+        <div class="watchlist-title">ניהול דילול — Buybacks מול Warrants + SBC</div>
+        <div class="watchlist-desc">עם $9.4B באישור Buyback מול 320M Warrants פוטנציאליים — ההנהלה צריכה להיות אגרסיבית בביצוע. כל עיכוב ב-Buybacks בעת מחיר מניה נמוך הוא הזדמנות שהוחמצה.</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Reverse DCF -->
+    <div class="sub-label">Reverse DCF — מה המחיר מגלם?</div>
+    <div class="dcf-box">
+      <div class="dcf-title">ניתוח תחזית הפוכה — הנחות מובנות במחיר השוק</div>
+      <div class="dcf-row">
+        <span class="dcf-label">FCF בסיס (2025)</span>
+        <span class="dcf-val mono">~$3.88B</span>
+      </div>
+      <div class="dcf-row">
+        <span class="dcf-label">יעד FCF בעוד 10 שנים</span>
+        <span class="dcf-val mono">~$50B</span>
+      </div>
+      <div class="dcf-row">
+        <span class="dcf-label">CAGR נדרש (FCF)</span>
+        <span class="dcf-val mono" style="color:var(--rose)">29.1%</span>
+      </div>
+      <div class="dcf-row">
+        <span class="dcf-label">TAM שוק AI + Data Center</span>
+        <span class="dcf-val mono">~$1T</span>
+      </div>
+      <div class="dcf-row">
+        <span class="dcf-label">נתח שוק נדרש ל-AMD</span>
+        <span class="dcf-val mono">20–25%</span>
+      </div>
+      <div class="dcf-row">
+        <span class="dcf-label">הכנסות נדרשות</span>
+        <span class="dcf-val mono">$200–250B</span>
+      </div>
+      <div class="dcf-row">
+        <span class="dcf-label">שולי FCF נדרשים</span>
+        <span class="dcf-val mono">28–33%</span>
+      </div>
+    </div>
+
+    <div class="info-box amber">
+      <div class="info-box-title">סיכום ה-DCF</div>
+      מסלול ה-FCF $50B אפשרי תיאורטית — בהינתן TAM של $1T ונתח 20–25% — אך דורש ביצוע מושלם במשך עשור רצוף. שיעור צמיחה של 29.1% CAGR אינו סולח לשום שנת כישלון.
+    </div>
+
+    <!-- Bottom line -->
+    <div class="verdict-box">
+      <h3>המסקנה: AMD עברה את נקודת האל-חזור</h3>
+      <p>
+        AMD הפכה מיצרנית שבבים לחברת מערכות AI משולבת. המעבר ממכירת שבבים בודדים למכירת תשתיות GW שלמות — בשילוב עם הובלת שוק השרתים ב-EPYC — יוצר בסיס פיננסי איתן שלא היה קיים לפני 3 שנים. הדוחות הקרובים יהיו המבחן הראשון לשאלה: האם ה-H2 2026 מספק את ההאצה שהשוק מצפה לה.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+</main>
+
+<!-- ════════════════ SCRIPTS ════════════════ -->
+<script>
+  // ── Tab switching ─────────────────────────
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      document.getElementById('panel-' + target).classList.add('active');
+
+      // re-render charts if needed
+      if (target === 'margins') renderMarginChart();
+      if (target === 'capital') renderSharesChart();
+    });
+  });
+
+  // ── Collapsible ───────────────────────────
+  function toggleCollapse(btn) {
+    btn.classList.toggle('open');
+    const content = btn.nextElementSibling;
+    content.classList.toggle('open');
+  }
+
+  // ── Margin Chart ──────────────────────────
+  let marginChartInstance = null;
+  function renderMarginChart() {
+    const ctx = document.getElementById('marginChart');
+    if (!ctx) return;
+    if (marginChartInstance) return; // already rendered
+
+    marginChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["2021", "2022", "2023", "2024", "2025", "Q4'25", "Q1'26E"],
+        datasets: [
+          {
+            label: 'GAAP %',
+            data: [48, 45, 46, 49, 50, 54, null],
+            backgroundColor: 'rgba(79, 70, 229, 0.75)',
+            borderColor: '#4F46E5',
+            borderWidth: 1.5,
+            borderRadius: 5,
+          },
+          {
+            label: 'Non-GAAP %',
+            data: [null, null, 50, 53, 52, 57, 55],
+            backgroundColor: 'rgba(5, 150, 105, 0.7)',
+            borderColor: '#059669',
+            borderWidth: 1.5,
+            borderRadius: 5,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+            align: 'end',
+            labels: {
+              font: { family: "'Heebo', sans-serif", size: 13 },
+              color: '#334155',
+              boxWidth: 14,
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}%`
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 40,
+            max: 65,
+            ticks: {
+              font: { family: "'IBM Plex Mono', monospace", size: 13 },
+              color: '#334155',
+              callback: v => v + '%'
+            },
+            grid: { color: '#F1F5F9' }
+          },
+          x: {
+            ticks: {
+              font: { family: "'IBM Plex Mono', monospace", size: 13 },
+              color: '#334155'
+            },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+  }
+
+  // ── Shares Chart ──────────────────────────
+  let sharesChartInstance = null;
+  function renderSharesChart() {
+    const ctx = document.getElementById('sharesChart');
+    if (!ctx) return;
+    if (sharesChartInstance) return;
+
+    sharesChartInstance = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["2022", "2023", "2024", "2025"],
+        datasets: [
+          {
+            label: 'מניות מדוללות (מיליארדים)',
+            data: [1.612, 1.616, 1.622, 1.636],
+            borderColor: '#4F46E5',
+            backgroundColor: 'rgba(79, 70, 229, 0.08)',
+            borderWidth: 2.5,
+            pointRadius: 6,
+            pointBackgroundColor: '#4F46E5',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            tension: 0.3,
+            fill: true,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              font: { family: "'Heebo', sans-serif", size: 13 },
+              color: '#334155',
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => ` ${ctx.raw}B מניות`
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 1.60,
+            max: 1.65,
+            ticks: {
+              font: { family: "'IBM Plex Mono', monospace", size: 13 },
+              color: '#334155',
+              callback: v => v.toFixed(3) + 'B'
+            },
+            grid: { color: '#F1F5F9' }
+          },
+          x: {
+            ticks: {
+              font: { family: "'IBM Plex Mono', monospace", size: 13 },
+              color: '#334155'
+            },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+  }
+
+  // Render default tab charts on load
+  document.addEventListener('DOMContentLoaded', () => {
+    // charts render on tab activation, not on load (tabs use lazy render)
+  });
+</script>
+
+
+<!-- Back to Home -->
+<a href="/value-investing/" style="position:fixed;bottom:24px;left:24px;z-index:9999;background:#1e293b;color:#fff;padding:10px 20px;border-radius:999px;font-family:Inter,sans-serif;font-size:14px;font-weight:600;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.15);display:flex;align-items:center;gap:8px;transition:all 0.2s ease;" onmouseover="this.style.background='#334155';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#1e293b';this.style.transform='translateY(0)'">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Home
+</a>
+
+<!-- Firebase Analytics -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+  import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyAG6999ZeGilevL_ZEKXsCkWlBS2gKeD_g",
+    authDomain: "edgar-value-miner.firebaseapp.com",
+    projectId: "edgar-value-miner",
+    storageBucket: "edgar-value-miner.firebasestorage.app",
+    messagingSenderId: "125102988170",
+    appId: "1:125102988170:web:0aa5579826e2bbd31d4673",
+    measurementId: "G-6R9HEDXKWF"
+  };
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  logEvent(analytics, "page_view", { page_title: document.title, page_location: window.location.href });
+</script>
+</body>
+</html>

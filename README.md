@@ -18,6 +18,7 @@ A collection of interactive investment research pages — thesis deep dives, edu
 - **[ZETA Global: Forensic Investigation Report](https://dubiwork.github.io/value-investing/thesis/zeta-forensic-2026.html)** — Deep bear case covering consent farms, revenue round-tripping, FCF illusion, M&A smoke screen, and insider selling
 - **[Reverse DCF: The Value Investor's Secret Weapon](https://dubiwork.github.io/value-investing/education/reverse-dcf.html)** — Reverse DCF framework explained with a real AMD case study
 - **[AMD Investment Thesis 2026](https://dubiwork.github.io/value-investing/thesis/amd-thesis-2026.html)** — Buffett-lens analysis: business moat, true FCF, Reverse DCF valuation, capital allocation. HOLD at $160, buy zone $85–$113
+- **[AMD Strategic Research: Pre-Q1 2026](https://dubiwork.github.io/value-investing/thesis/amd-forensic-2026.html)** — Comprehensive forensic deep-dive: market share, AI deals, gross margins, dilution, geopolitical risks. Interactive tabs + charts
 
 ## How It Works
 
@@ -41,6 +42,7 @@ value-investing/
 
 | Date | Change |
 |------|--------|
+| 2026-03-15 | Added AMD Strategic Research — comprehensive forensic deep-dive merging two reports with interactive tabs and charts |
 | 2026-03-15 | Added AMD Investment Thesis 2026 — "Industrial Financial Noir" design with Buffett-lens analysis |
 | 2026-03-14 | Added Reverse DCF educational guide with AMD case study |
 | 2026-03-14 | Added ZETA Global forensic investigation report (bear case / short thesis) |
