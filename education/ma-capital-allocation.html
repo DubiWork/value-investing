@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הקצאת הון: למה רכישות (M&A) נכשלות?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * { font-family: 'Heebo', sans-serif; }
+    body { font-size: 1.05rem; }
+    .tab-content { display: none; animation: fadeIn 0.4s ease; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .check-btn { transition: all 0.2s ease; }
+    .check-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .framework-step { transition: all 0.2s ease; cursor: pointer; }
+    .framework-step:hover { transform: translateY(-2px); }
+    .framework-step.active { border-color: #f97316; background: #fff7ed; }
+    .risk-label { transition: all 0.2s ease; }
+    .risk-label:hover { background: #334155; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 p-4 md:p-8">
+
+  <!-- Header -->
+  <header class="max-w-4xl mx-auto mb-12 text-center">
+    <div class="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-bold mb-4">
+      <i data-lucide="trending-up" style="width:16px;height:16px"></i>
+      Saturday Stock School
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black mb-4 text-slate-900">
+      הקצאת הון: למה רכישות (M&A) נכשלות?
+    </h1>
+    <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+      רוב הרכישות מייצרות כסף למוכרים, לא לקונים. בואו נבין למה ואיך להימנע ממלכודות.
+    </p>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <div class="max-w-4xl mx-auto mb-8 bg-white p-1 rounded-xl shadow-sm border border-slate-200 flex flex-wrap">
+    <button onclick="switchTab('framework')" id="tab-btn-framework"
+      class="flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-bold transition-all bg-indigo-600 text-white shadow-md min-w-[140px]">
+      <i data-lucide="layers" style="width:18px;height:18px"></i>
+      מפת הדרכים
+    </button>
+    <button onclick="switchTab('failures')" id="tab-btn-failures"
+      class="flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-bold transition-all text-slate-500 hover:bg-slate-100 min-w-[140px]">
+      <i data-lucide="shield-alert" style="width:18px;height:18px"></i>
+      למה הן נכשלות?
+    </button>
+    <button onclick="switchTab('simulator')" id="tab-btn-simulator"
+      class="flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-bold transition-all text-slate-500 hover:bg-slate-100 min-w-[140px]">
+      <i data-lucide="scale" style="width:18px;height:18px"></i>
+      סימולטור סיכון
+    </button>
+    <button onclick="switchTab('amd')" id="tab-btn-amd"
+      class="flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-bold transition-all text-slate-500 hover:bg-slate-100 min-w-[140px]">
+      <i data-lucide="bar-chart-3" style="width:18px;height:18px"></i>
+      AMD Case Study
+    </button>
+  </div>
+
+  <!-- Content Area -->
+  <main class="max-w-4xl mx-auto">
+
+    <!-- TAB 1: Framework -->
+    <div id="tab-framework" class="tab-content active">
+      <div class="space-y-6">
+        <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-200">
+          <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+            <div class="p-2 bg-indigo-100 rounded-lg text-indigo-600">
+              <i data-lucide="building-2" style="width:24px;height:24px"></i>
+            </div>
+            מהי הקצאת הון?
+          </h3>
+          <p class="text-slate-600 mb-8 leading-relaxed">
+            הקצאת הון היא התהליך שבו הנהלת החברה מחליטה איך להשקיע את הרווחים שלה. זו המשימה החשובה ביותר של כל מנכ"ל. חברות יכולות לבחור בין פיתוח פנימי (צמיחה אורגנית) לבין קניית חברה מוכנה (רכישות).
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-6 rounded-2xl bg-emerald-50 border border-emerald-100">
+              <div class="flex items-center gap-3 mb-3 text-emerald-700 font-bold">
+                <i data-lucide="trending-up" style="width:20px;height:20px"></i>
+                צמיחה אורגנית
+              </div>
+              <ul class="text-sm text-slate-700 space-y-2">
+                <li>• פיתוח מוצרים חדשים</li>
+                <li>• כניסה לשווקים חדשים</li>
+                <li>• בדרך כלל סיכון נמוך יותר</li>
+                <li>• דורש יותר זמן (Build)</li>
+              </ul>
+            </div>
+            <div class="p-6 rounded-2xl bg-indigo-50 border border-indigo-100">
+              <div class="flex items-center gap-3 mb-3 text-indigo-700 font-bold">
+                <i data-lucide="zap" style="width:20px;height:20px"></i>
+                מיזוגים ורכישות (M&A)
+              </div>
+              <ul class="text-sm text-slate-700 space-y-2">
+                <li>• קניית נתח שוק קיים</li>
+                <li>• רכישת טכנולוגיה מוכנה</li>
+                <li>• סיכון גבוה לכישלון</li>
+                <li>• תוצאות מהירות (Buy)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-8 p-6 bg-slate-900 rounded-2xl text-white">
+            <h4 class="font-bold mb-4 flex items-center gap-2">
+              <i data-lucide="info" style="width:18px;height:18px" class="text-indigo-400"></i>
+              כלל האצבע של Brian Feroldi:
+            </h4>
+            <div class="text-xl font-medium border-r-4 border-indigo-500 pr-4 py-2">
+              האם התשואה הצפויה על ההשקעה (ROI) גבוהה מעלות ההון (Cost of Capital)?
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: Why They Fail -->
+    <div id="tab-failures" class="tab-content">
+      <div class="space-y-6">
+        <h3 class="text-2xl font-bold mb-8 text-center">3 הסיבות שרכישות משמידות ערך</h3>
+
+        <div class="grid grid-cols-1 gap-6">
+          <!-- Reason 1 -->
+          <div class="bg-white p-6 rounded-2xl shadow-md border-r-8 border-rose-500 flex gap-6">
+            <div class="bg-rose-100 text-rose-600 p-4 rounded-xl h-fit shrink-0">
+              <i data-lucide="users" style="width:32px;height:32px"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold mb-2">1. בעיית הנציג (The Agency Problem)</h4>
+              <p class="text-slate-600 leading-relaxed">
+                מנהלים מקבלים בונוסים על הגדלת הכנסות, לא תמיד על הגדלת הרווח למניה. רכישות גדולות גורמות לחברה להיראות חשובה יותר ומאדירות את ה"אגו" של ההנהלה, גם אם הן פוגעות בבעלי המניות.
+              </p>
+            </div>
+          </div>
+
+          <!-- Reason 2 -->
+          <div class="bg-white p-6 rounded-2xl shadow-md border-r-8 border-amber-500 flex gap-6">
+            <div class="bg-amber-100 text-amber-600 p-4 rounded-xl h-fit shrink-0">
+              <i data-lucide="alert-triangle" style="width:32px;height:32px"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold mb-2">2. המוכרים יודעים יותר (Asymmetric Information)</h4>
+              <p class="text-slate-600 leading-relaxed">
+                לא משנה כמה הקונה יחקור מבחוץ, האנשים בתוך החברה הנרכשת תמיד יודעים איפה נמצאים ה"שלדים" בארון. אם הם מסכימים למכור, כנראה שהם יודעים משהו שהקונה עוד לא גילה.
+              </p>
+            </div>
+          </div>
+
+          <!-- Reason 3 -->
+          <div class="bg-white p-6 rounded-2xl shadow-md border-r-8 border-indigo-500 flex gap-6">
+            <div class="bg-indigo-100 text-indigo-600 p-4 rounded-xl h-fit shrink-0">
+              <i data-lucide="dollar-sign" style="width:32px;height:32px"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold mb-2">3. פרמיית רכישה יקרה (Premium Price)</h4>
+              <p class="text-slate-600 leading-relaxed">
+                כדי לשכנע חברה להימכר, כמעט תמיד צריך לשלם 20% עד 40% מעל מחיר השוק שלה. הקונה מתחיל בפיגור משמעותי וחייב "סינרגיה" מושלמת רק כדי להצדיק את המחיר ההתחלתי.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-rose-50 p-6 rounded-2xl border border-rose-100 mt-8">
+          <div class="flex items-center gap-2 text-rose-700 font-bold mb-2 underline decoration-rose-200">
+            <i data-lucide="shield-alert" style="width:18px;height:18px"></i>
+            השורה התחתונה:
+          </div>
+          <p class="text-rose-900 font-medium">
+            הראיות חד משמעיות: רוב הרכישות מייצרות כסף למוכרים, אך משמידות ערך לקונים.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: Risk Simulator -->
+    <div id="tab-simulator" class="tab-content">
+      <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-200">
+        <h3 class="text-2xl font-bold mb-2">האם הרכישה הגיונית?</h3>
+        <p class="text-slate-500 mb-8 italic">בדוק את הרכישה האחרונה של המניה שלך:</p>
+
+        <div class="space-y-4" id="checklist-container">
+          <button onclick="toggleCheck('roi')" id="check-roi"
+            class="check-btn w-full p-4 rounded-xl border-2 text-right flex items-center justify-between border-slate-100 bg-white text-slate-600">
+            <span class="font-medium">האם התשואה הצפויה (ROI) גבוהה משמעותית מעלות ההון?</span>
+            <div id="icon-roi" class="w-6 h-6 rounded-full border-2 border-slate-200 shrink-0"></div>
+          </button>
+          <button onclick="toggleCheck('premium')" id="check-premium"
+            class="check-btn w-full p-4 rounded-xl border-2 text-right flex items-center justify-between border-slate-100 bg-white text-slate-600">
+            <span class="font-medium">האם הפרמיה ששולמה נמוכה מ-20%?</span>
+            <div id="icon-premium" class="w-6 h-6 rounded-full border-2 border-slate-200 shrink-0"></div>
+          </button>
+          <button onclick="toggleCheck('culture')" id="check-culture"
+            class="check-btn w-full p-4 rounded-xl border-2 text-right flex items-center justify-between border-slate-100 bg-white text-slate-600">
+            <span class="font-medium">האם שתי החברות חולקות תרבות ארגונית דומה?</span>
+            <div id="icon-culture" class="w-6 h-6 rounded-full border-2 border-slate-200 shrink-0"></div>
+          </button>
+          <button onclick="toggleCheck('info')" id="check-info"
+            class="check-btn w-full p-4 rounded-xl border-2 text-right flex items-center justify-between border-slate-100 bg-white text-slate-600">
+            <span class="font-medium">האם זו רכישה "קטנה" (Bolton) ולא רכישת ענק משנת חיים?</span>
+            <div id="icon-info" class="w-6 h-6 rounded-full border-2 border-slate-200 shrink-0"></div>
+          </button>
+        </div>
+
+        <div id="risk-result" class="mt-10 p-8 rounded-2xl text-center transition-all bg-red-50">
+          <div class="text-sm font-bold text-slate-500 mb-1 uppercase tracking-wider">סטטוס רכישה</div>
+          <div id="risk-text" class="text-3xl font-black text-red-600">סיכון גבוה מאוד</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: AMD Case Study -->
+    <div id="tab-amd" class="tab-content">
+      <div class="space-y-8">
+
+        <!-- AMD Framework Steps -->
+        <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+          <h2 class="text-2xl font-bold mb-2 flex items-center gap-2">
+            <i data-lucide="bar-chart-3" style="width:24px;height:24px" class="text-orange-500"></i>
+            AMD: המאסטר בהקצאת הון?
+          </h2>
+          <p class="text-lg text-slate-600 mb-6">
+            בואו ננתח את הרכישות של AMD דרך העדשה של בריאן פרולדי וצ'ארלי מאנגר.
+          </p>
+
+          <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+            מפת הדרכים של באפט ופרולדי
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="framework-steps">
+            <div class="framework-step p-4 rounded-2xl border-2 border-orange-500 bg-orange-50" onclick="setActiveStep(0)" data-step="0">
+              <div class="text-orange-600 font-bold mb-1">שלב 1</div>
+              <div class="font-bold text-sm mb-2">ROI > Cost of Capital?</div>
+              <p class="text-xs text-slate-500 leading-relaxed">האם הרכישה תייצר תשואה גבוהה מעלות ההון (10%)?</p>
+            </div>
+            <div class="framework-step p-4 rounded-2xl border-2 border-slate-100" onclick="setActiveStep(1)" data-step="1">
+              <div class="text-orange-600 font-bold mb-1">שלב 2</div>
+              <div class="font-bold text-sm mb-2">Organic vs Acquisition</div>
+              <p class="text-xs text-slate-500 leading-relaxed">האם לבנות (Build) או לקנות (Buy)?</p>
+            </div>
+            <div class="framework-step p-4 rounded-2xl border-2 border-slate-100" onclick="setActiveStep(2)" data-step="2">
+              <div class="text-orange-600 font-bold mb-1">שלב 3</div>
+              <div class="font-bold text-sm mb-2">Information Gap</div>
+              <p class="text-xs text-slate-500 leading-relaxed">כמה באמת אנחנו יודעים על המצב הפנימי של הנרכשת?</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- AMD Deals -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Xilinx -->
+          <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold">Xilinx (2022)</h3>
+              <span class="text-xs px-2 py-1 rounded-lg font-bold bg-emerald-100 text-emerald-700">Success</span>
+            </div>
+            <div class="flex gap-4 mb-4 text-sm font-mono text-slate-500">
+              <span>עלות: $49B</span>
+              <span>מבנה: All-Stock</span>
+            </div>
+            <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+              הרכישה הגדולה ביותר בתולדות השבבים. הפכה את AMD למובילה בתחום ה-FPGA וה-Adaptive Computing.
+            </p>
+            <div class="space-y-3">
+              <div class="text-xs font-bold uppercase text-slate-400">ניתוח סיכונים (לפי ה-PDF):</div>
+              <div class="flex items-center justify-between p-2 bg-slate-50 rounded-lg text-xs">
+                <span class="flex items-center gap-1"><i data-lucide="alert-circle" style="width:14px;height:14px"></i> בעיית הנציג</span>
+                <span class="font-bold">נמוך - ליסה סו הוכיחה מיקוד בערך לבעלי המניות.</span>
+              </div>
+              <div class="flex items-center justify-between p-2 bg-slate-50 rounded-lg text-xs">
+                <span class="flex items-center gap-1"><i data-lucide="search" style="width:14px;height:14px"></i> פער המידע</span>
+                <span class="font-bold">בינוני - שתי החברות עבדו יחד שנים רבות לפני כן.</span>
+              </div>
+              <div class="flex items-center justify-between p-2 bg-slate-50 rounded-lg text-xs">
+                <span class="flex items-center gap-1"><i data-lucide="target" style="width:14px;height:14px"></i> פרמיית מחיר</span>
+                <span class="font-bold">גבוה - שולמה פרמיה משמעותית בשווי מניות.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ZT Systems -->
+          <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold">ZT Systems (2024)</h3>
+              <span class="text-xs px-2 py-1 rounded-lg font-bold bg-amber-100 text-amber-700">Pending</span>
+            </div>
+            <div class="flex gap-4 mb-4 text-sm font-mono text-slate-500">
+              <span>עלות: $4.9B</span>
+              <span>מבנה: Cash & Stock</span>
+            </div>
+            <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+              נועדה להעניק ל-AMD יכולת תכנון מערכות שרתים שלמות (Systems) כדי להתחרות ב-Nvidia.
+            </p>
+            <div class="space-y-3">
+              <div class="text-xs font-bold uppercase text-slate-400">ניתוח סיכונים (לפי ה-PDF):</div>
+              <div class="flex items-center justify-between p-2 bg-slate-50 rounded-lg text-xs">
+                <span class="flex items-center gap-1"><i data-lucide="alert-circle" style="width:14px;height:14px"></i> בעיית הנציג</span>
+                <span class="font-bold">בינוני - ניסיון להדביק את הפער בכל מחיר.</span>
+              </div>
+              <div class="flex items-center justify-between p-2 bg-slate-50 rounded-lg text-xs">
+                <span class="flex items-center gap-1"><i data-lucide="search" style="width:14px;height:14px"></i> פער המידע</span>
+                <span class="font-bold">גבוה - חברה פרטית, קשה יותר לנתח מבחוץ.</span>
+              </div>
+              <div class="flex items-center justify-between p-2 bg-slate-50 rounded-lg text-xs">
+                <span class="flex items-center gap-1"><i data-lucide="target" style="width:14px;height:14px"></i> פרמיית מחיר</span>
+                <span class="font-bold">לא ידוע - טרם פורסמו כל הפרטים.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ZT Systems Red Flags Audit -->
+        <section class="bg-slate-900 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-8 opacity-5">
+            <i data-lucide="help-circle" style="width:120px;height:120px"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-6">למה רכישת ZT Systems עלולה להיכשל?</h3>
+          <p class="text-slate-400 mb-8 text-sm italic">
+            סמן את הדגלים האדומים שאתה מזהה לפי השיעור של ה-Brian-ים:
+          </p>
+
+          <div class="space-y-4" id="zt-checklist">
+            <label class="risk-label flex items-center gap-3 p-4 bg-slate-800 rounded-xl cursor-pointer border border-slate-700">
+              <input type="checkbox" class="w-5 h-5 rounded accent-orange-500">
+              <span class="text-sm leading-relaxed">האם המנהלים ב-ZT Systems יודעים על בעיות ייצור שהציבור לא יודע? (מידע א-סימטרי)</span>
+            </label>
+            <label class="risk-label flex items-center gap-3 p-4 bg-slate-800 rounded-xl cursor-pointer border border-slate-700">
+              <input type="checkbox" class="w-5 h-5 rounded accent-orange-500">
+              <span class="text-sm leading-relaxed">האם AMD שילמה מעל 30% מעל השווי האמיתי רק כדי "לנצח" את אנבידיה? (פרמיה)</span>
+            </label>
+            <label class="risk-label flex items-center gap-3 p-4 bg-slate-800 rounded-xl cursor-pointer border border-slate-700">
+              <input type="checkbox" class="w-5 h-5 rounded accent-orange-500">
+              <span class="text-sm leading-relaxed">האם השילוב התרבותי בין חברת חומרה לחברת תכנון מערכות ייכשל? (אינטגרציה)</span>
+            </label>
+            <label class="risk-label flex items-center gap-3 p-4 bg-slate-800 rounded-xl cursor-pointer border border-slate-700">
+              <input type="checkbox" class="w-5 h-5 rounded accent-orange-500">
+              <span class="text-sm leading-relaxed">האם ליסה סו מונעת מאגו להגדיל את האימפריה או מערך כלכלי? (בעיית הנציג)</span>
+            </label>
+          </div>
+
+          <div class="mt-8 p-4 bg-orange-500/10 border border-orange-500/50 rounded-2xl text-orange-200 text-sm italic">
+            <i data-lucide="info" style="width:16px;height:16px" class="inline ml-2 mb-1"></i>
+            זכור: רוב הרכישות מייצרות כסף למוכר. המשקיע החכם בודק האם הקונה (AMD) באמת קיבל נכס שיצמח יותר מעלות הדילול של בעלי המניות.
+          </div>
+        </section>
+
+        <!-- AMD Footer Stats -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 flex flex-col md:flex-row items-center justify-center gap-8">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-slate-800">4.7%</div>
+            <div class="text-xs text-slate-500 uppercase tracking-wider">SBC / Revenue</div>
+          </div>
+          <div class="w-px h-10 bg-slate-200 hidden md:block"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-slate-800">118%</div>
+            <div class="text-xs text-slate-500 uppercase tracking-wider">Inc. ROIC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="max-w-4xl mx-auto mt-16 pt-8 border-t border-slate-200 text-slate-400 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+    <div>מבוסס על שיעורי Saturday Stock School מאת בריאן פרולדי ובריאן סטופל</div>
+    <div class="flex gap-4">
+      <span class="flex items-center gap-1"><i data-lucide="chevron-right" style="width:14px;height:14px"></i> Long-Term Mindset</span>
+      <span class="flex items-center gap-1"><i data-lucide="chevron-right" style="width:14px;height:14px"></i> Investing Explained Visually</span>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+
+    // Tab switching
+    const tabIds = ['framework', 'failures', 'simulator', 'amd'];
+
+    function switchTab(tabName) {
+      // Hide all tab content
+      tabIds.forEach(id => {
+        document.getElementById('tab-' + id).classList.remove('active');
+        const btn = document.getElementById('tab-btn-' + id);
+        btn.className = 'flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-bold transition-all text-slate-500 hover:bg-slate-100 min-w-[140px]';
+      });
+      // Show selected tab
+      document.getElementById('tab-' + tabName).classList.add('active');
+      const activeBtn = document.getElementById('tab-btn-' + tabName);
+      activeBtn.className = 'flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-bold transition-all bg-indigo-600 text-white shadow-md min-w-[140px]';
+      // Re-init icons in newly visible tab
+      lucide.createIcons();
+    }
+
+    // Risk Simulator checklist
+    const checklist = { roi: false, premium: false, culture: false, info: false };
+
+    function toggleCheck(key) {
+      checklist[key] = !checklist[key];
+      const btn = document.getElementById('check-' + key);
+      const icon = document.getElementById('icon-' + key);
+
+      if (checklist[key]) {
+        btn.className = 'check-btn w-full p-4 rounded-xl border-2 text-right flex items-center justify-between border-indigo-500 bg-indigo-50 text-indigo-700';
+        icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-600"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+      } else {
+        btn.className = 'check-btn w-full p-4 rounded-xl border-2 text-right flex items-center justify-between border-slate-100 bg-white text-slate-600';
+        icon.innerHTML = '';
+        icon.className = 'w-6 h-6 rounded-full border-2 border-slate-200 shrink-0';
+      }
+
+      updateRisk();
+    }
+
+    function updateRisk() {
+      const count = Object.values(checklist).filter(Boolean).length;
+      const resultDiv = document.getElementById('risk-result');
+      const textDiv = document.getElementById('risk-text');
+
+      if (count <= 1) {
+        resultDiv.className = 'mt-10 p-8 rounded-2xl text-center transition-all bg-red-50';
+        textDiv.className = 'text-3xl font-black text-red-600';
+        textDiv.textContent = 'סיכון גבוה מאוד';
+      } else if (count <= 3) {
+        resultDiv.className = 'mt-10 p-8 rounded-2xl text-center transition-all bg-amber-50';
+        textDiv.className = 'text-3xl font-black text-amber-600';
+        textDiv.textContent = 'סיכון בינוני';
+      } else {
+        resultDiv.className = 'mt-10 p-8 rounded-2xl text-center transition-all bg-emerald-50';
+        textDiv.className = 'text-3xl font-black text-emerald-600';
+        textDiv.textContent = 'רכישה בעלת פוטנציאל';
+      }
+    }
+
+    // AMD Framework Steps
+    function setActiveStep(idx) {
+      document.querySelectorAll('.framework-step').forEach(el => {
+        el.classList.remove('active');
+        el.className = el.className.replace('border-orange-500 bg-orange-50', 'border-slate-100');
+      });
+      const target = document.querySelector('[data-step="' + idx + '"]');
+      target.classList.add('active');
+      target.className = target.className.replace('border-slate-100', 'border-orange-500 bg-orange-50');
+    }
+  </script>
+
+  <!-- Back to Home -->
+  <a href="/value-investing/" style="position:fixed;bottom:24px;left:24px;z-index:9999;background:#1e293b;color:#fff;padding:10px 20px;border-radius:999px;font-family:Inter,sans-serif;font-size:14px;font-weight:600;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.15);display:flex;align-items:center;gap:8px;transition:all 0.2s ease;" onmouseover="this.style.background='#334155';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#1e293b';this.style.transform='translateY(0)'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+  </a>
+
+  <!-- Firebase Analytics -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+    import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyAG6999ZeGilevL_ZEKXsCkWlBS2gKeD_g",
+      authDomain: "edgar-value-miner.firebaseapp.com",
+      projectId: "edgar-value-miner",
+      storageBucket: "edgar-value-miner.firebasestorage.app",
+      messagingSenderId: "125102988170",
+      appId: "1:125102988170:web:0aa5579826e2bbd31d4673",
+      measurementId: "G-6R9HEDXKWF"
+    };
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    logEvent(analytics, "page_view", { page_title: document.title, page_location: window.location.href });
+  </script>
+
+</body>
+</html>

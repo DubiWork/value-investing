@@ -103,6 +103,22 @@
         "EPYC",
         "Instinct"
       ]
+    },
+    {
+      "file": "education/ma-capital-allocation.html",
+      "title": "Capital Allocation: Why M&A Deals Fail",
+      "description": "Interactive guide to M&A failures: agency problem, asymmetric information, premium pricing. Includes risk simulator and AMD case study (Xilinx, ZT Systems). Based on Saturday Stock School.",
+      "category": "education",
+      "date": "2026-03-15",
+      "tags": [
+        "M&A",
+        "capital allocation",
+        "AMD",
+        "Xilinx",
+        "ZT Systems",
+        "agency problem",
+        "Feroldi"
+      ]
     }
   ]
 }
