@@ -20,6 +20,7 @@ A collection of interactive investment research pages — thesis deep dives, edu
 - **[AMD Investment Thesis 2026](https://dubiwork.github.io/value-investing/thesis/amd-thesis-2026.html)** — Buffett-lens analysis: business moat, true FCF, Reverse DCF valuation, capital allocation. HOLD at $160, buy zone $85–$113
 - **[AMD Strategic Research: Pre-Q1 2026](https://dubiwork.github.io/value-investing/thesis/amd-forensic-2026.html)** — Comprehensive forensic deep-dive: market share, AI deals, gross margins, dilution, geopolitical risks. Interactive tabs + charts
 - **[Capital Allocation: Why M&A Deals Fail](https://dubiwork.github.io/value-investing/education/ma-capital-allocation.html)** — Interactive guide to M&A failures with risk simulator and AMD case study (Xilinx, ZT Systems). Based on Saturday Stock School
+- **[SoFi Technologies: Business Clarity Dashboard](https://dubiwork.github.io/value-investing/thesis/sofi-clarity-2026.html)** — Visual 8-section dashboard: company overview, revenue model, CEO vision, KPIs, competitive landscape, risks, and timeline. All data from 157 SEC filing sources
 
 ## How It Works
 
@@ -53,3 +54,4 @@ value-investing/
 | 2026-03-12 | Updated Inc. ROIC guide — added money vs percentage clarification, Buffett's 10% hurdle rate badge |
 | 2026-03-12 | Reorganized repo into `thesis/` and `education/` folders with dynamic index and `pages.json` manifest |
 | 2026-03-12 | Initial publish — ZETA Global 2025 thesis and Incremental ROIC educational guide |
+| 2026-03-22 | Added SoFi Business Clarity Dashboard — visual 8-section research dashboard with Chart.js charts, 157 SEC filing sources via NotebookLM |

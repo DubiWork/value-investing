@@ -59,7 +59,7 @@
     {
       "file": "education/reverse-dcf.html",
       "title": "Reverse DCF: The Value Investor's Secret Weapon",
-      "description": "Stop guessing the future — read the market's mind. Reverse DCF framework explained with a real AMD case study showing implied growth expectations.",
+      "description": "Stop guessing the future \u00e2\u20ac\u201d read the market's mind. Reverse DCF framework explained with a real AMD case study showing implied growth expectations.",
       "category": "education",
       "date": "2026-03-14",
       "tags": [
@@ -73,7 +73,7 @@
     {
       "file": "thesis/amd-thesis-2026.html",
       "title": "AMD Investment Thesis 2026: Industrial Financial Noir",
-      "description": "Deep-dive Buffett-lens analysis of AMD: business quality moat, true FCF after SBC, Reverse DCF valuation, and capital allocation critique. HOLD at $160, buy zone $85–$113.",
+      "description": "Deep-dive Buffett-lens analysis of AMD: business quality moat, true FCF after SBC, Reverse DCF valuation, and capital allocation critique. HOLD at $160, buy zone $85\u00e2\u20ac\u201c$113.",
       "category": "thesis",
       "date": "2026-03-15",
       "tags": [
@@ -118,6 +118,22 @@
         "ZT Systems",
         "agency problem",
         "Feroldi"
+      ]
+    },
+    {
+      "file": "thesis/sofi-clarity-2026.html",
+      "title": "SoFi Technologies: Business Clarity Dashboard",
+      "description": "Visual one-pager: 8 sections covering company overview, revenue model, CEO vision, KPIs, competitive landscape, risks, and timeline. All data sourced from SEC filings and earnings calls via NotebookLM (157 sources).",
+      "category": "thesis",
+      "date": "2026-03-22",
+      "tags": [
+        "SOFI",
+        "dashboard",
+        "fintech",
+        "bank charter",
+        "revenue model",
+        "KPIs",
+        "competitive analysis"
       ]
     }
   ]
